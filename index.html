@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>DDIG | Diaspora Development Initiative Ghana | Mobilizing Diaspora Talent for Ghana's Development</title>
+  <meta name="description" content="DDIG connects Ghanaian/African diaspora professionals to contribute talents, expertise & networks for Ghana's development in energy, tech, finance, governance & more.">
+  <meta name="keywords" content="Ghana diaspora, African diaspora, diaspora professionals, talent mobilization, Ghana development, diaspora network, Ghana projects, diaspora expertise">
+  <meta name="author" content="Diaspora Development Initiative Ghana">
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ================= DDIG NEW DESIGN ================= */
+    :root {
+      --primary: #006b3f;      /* Ghana Green */
+      --secondary: #fcd116;    /* Ghana Gold */
+      --accent: #ce1126;       /* Ghana Red */
+      --dark: #111111;
+      --light: #f8f9fa;
+      --gray: #666666;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+      --radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--light);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* ================= MODERN HEADER ================= */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 107, 63, 0.1);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .nav-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .logo-text span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10001;
+    }
+
+    .hamburger {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: var(--primary);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 3px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .hamburger::before { top: -8px; }
+    .hamburger::after { bottom: -8px; }
+
+    .menu-toggle.active .hamburger { background: transparent; }
+    .menu-toggle.active .hamburger::before { top: 0; transform: rotate(45deg); }
+    .menu-toggle.active .hamburger::after { bottom: 0; transform: rotate(-45deg); }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--dark);
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover { color: var(--primary); }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after { width: 100%; }
+
+    .join-btn {
+      background: linear-gradient(135deg, var(--primary), #008751);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 107, 63, 0.2);
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .join-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 107, 63, 0.3);
+      background: linear-gradient(135deg, #008751, var(--primary));
+    }
+
+    /* ================= HERO SECTION - DIASPORA FOCUS ================= */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      margin-top: 90px;
+      background: linear-gradient(135deg, #0a2e1d 0%, var(--primary) 100%);
+    }
+
+    .hero-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text {
+      animation: fadeUp 1s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(252, 209, 22, 0.2);
+      color: var(--secondary);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      border: 1px solid rgba(252, 209, 22, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 25px;
+      line-height: 1.1;
+    }
+
+    .hero h1 .highlight {
+      color: var(--secondary);
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 35px;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 35px;
+      font-weight: 600;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: var(--secondary);
+      color: var(--dark);
+      box-shadow: 0 6px 20px rgba(252, 209, 22, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(252, 209, 22, 0.4);
+      background: #ffde59;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .hero-visual {
+      position: relative;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .globe-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .globe {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #1a4b2e 0%, var(--primary) 100%);
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .globe::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M50,0 Q95,50 50,100 Q5,50 50,0 Z" fill="white"/></svg>') repeat;
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .connection-dots {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--secondary);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .dot:nth-child(1) { top: 20%; left: 30%; }
+    .dot:nth-child(2) { top: 40%; left: 70%; }
+    .dot:nth-child(3) { top: 70%; left: 20%; }
+    .dot:nth-child(4) { top: 60%; left: 60%; }
+    .dot:nth-child(5) { top: 30%; left: 50%; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    /* ================= WHAT WE DO ================= */
+    .section {
+      padding: 100px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .section-title p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Talent Mobilization Grid */
+    .talent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .talent-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 4px solid var(--primary);
+    }
+
+    .talent-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .talent-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(0, 107, 63, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .talent-card h3 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .talent-card p {
+      color: var(--gray);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* ================= EXECUTIVE TEAM ================= */
+    .team-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .team-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      margin: 30px auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      font-weight: 700;
+    }
+
+    .team-info {
+      padding: 0 20px 30px;
+    }
+
+    .team-name {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .team-role {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .team-bio {
+      color: var(--gray);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    /* ================= JOIN COMMUNITY ================= */
+    .join-section {
+      background: linear-gradient(135deg, var(--primary), #0a2e1d);
+      color: white;
+      text-align: center;
+    }
+
+    .join-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .join-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .join-content p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .benefit-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: var(--radius);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .benefit-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--secondary);
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 80px 40px 40px;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary), var(--primary));
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin-bottom: 60px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .footer-logo img {
+      height: 50px;
+    }
+
+    .footer-logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+    }
+
+    .footer-logo-text span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #ccc;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      color: var(--secondary);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .contact-info {
+      color: #ccc;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 15px;
+    }
+
+    .contact-info a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact-info a:hover {
+      color: var(--secondary);
+    }
+
+    .whatsapp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-badge:hover {
+      transform: scale(1.05);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .social-icon:hover {
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #999;
+      font-size: 0.9rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 1200px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      
+      .globe-container {
+        height: 300px;
+      }
+      
+      .globe {
+        width: 250px;
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-wrapper {
+        padding: 15px 20px;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        padding: 100px 30px 30px;
+        transition: right 0.4s ease;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+        z-index: 10000;
+      }
+      
+      .nav ul.active {
+        right: 0;
+      }
+      
+      .nav li {
+        width: 100%;
+      }
+      
+      .nav a {
+        display: block;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 1.1rem;
+      }
+      
+      .hero {
+        height: auto;
+        min-height: auto;
+        padding: 120px 0 80px;
+        margin-top: 80px;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      .section {
+        padding: 60px 20px;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .footer {
+        padding: 60px 20px 30px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 1.1rem;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .talent-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="nav-wrapper">
+      <div class="logo-container">
+        <a href="index.html" aria-label="DDIG Home">
+          <img src="images\DDIG_Logo.png" alt="DDIG Logo" class="logo" width="150" height="50">
+        </a>
+        <div class="logo-text">
+          Diaspora Development Initiative Ghana
+          <span>Connecting Talent • Driving Development</span>
+        </div>
+      </div>
+
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <ul id="main-nav">
+          <li><a class="active" href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="talent-pool.html">Talent Pool</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html" class="join-btn">Join Community</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" role="main">
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-tag">Platform for Ghanaian/African Diaspora Professionals</span>
+          <h1 id="hero-heading">
+            Mobilizing <span class="highlight">Diaspora Talent</span> for Ghana's Development
+          </h1>
+          <p class="hero-subtitle">
+            DDIG connects Ghanaian/African professionals worldwide with opportunities to contribute 
+            their expertise in environment, energy, tech, finance, governance, and more to drive 
+            sustainable development in Ghana and Africa.
+          </p>
+          <div class="hero-cta">
+            <a href="contact.html" class="btn btn-primary">
+               Join Our Network
+            </a>
+            <a href="talent-pool.html" class="btn btn-secondary">
+               Share Your Expertise
+            </a>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="globe-container">
+            <div class="globe">
+              <div class="connection-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Do -->
+    <section class="section" aria-labelledby="what-we-do">
+      <div class="section-title">
+        <h2 id="what-we-do">What We Do</h2>
+        <p>Leveraging diaspora expertise for Ghana's sustainable development</p>
+      </div>
+      
+      <div class="talent-grid">
+        <div class="talent-card">
+          <div class="talent-icon">💎</div>
+          <h3>Talent Mobilization</h3>
+          <p>Connect diaspora professionals in environment, energy, tech, sciences, finance, 
+          and governance with development projects in Ghana.</p>
+        </div>
+        
+        <div class="talent-card">
+          <div class="talent-icon">🌐</div>
+          <h3>Global Networking</h3>
+          <p>Build bridges between Ghanaian/African professionals worldwide and local 
+          stakeholders for collaboration and knowledge exchange.</p>
+        </div>
+        
+        <div class="talent-card">
+          <div class="talent-icon">🚀</div>
+          <h3>Project Development</h3>
+          <p>Support and coordinate initiatives that drive positive change across key 
+          sectors in Ghana and Africa.</p>
+        </div>
+        
+        <div class="talent-card">
+          <div class="talent-icon">📚</div>
+          <h3>Knowledge Sharing</h3>
+          <p>Facilitate expertise exchange between diaspora professionals and local 
+          institutions for capacity building.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Team -->
+
+
+    <!-- Join Community -->
+    <section class="section join-section" aria-labelledby="join-community">
+      <div class="join-content">
+        <h2 id="join-community">Join Our Diaspora Community</h2>
+        <p>Be part of a dynamic network shaping Ghana and Africa's future through expertise sharing and collaboration</p>
+        
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <h4>Impactful Projects</h4>
+            <p>Contribute to meaningful development initiatives</p>
+          </div>
+          <div class="benefit-item">
+            <h4>Global Network</h4>
+            <p>Connect with Ghanaian-African professionals worldwide</p>
+          </div>
+          <div class="benefit-item">
+            <h4>Professional Growth</h4>
+            <p>Develop skills through mentorship and collaboration</p>
+          </div>
+          <div class="benefit-item">
+            <h4>Development Updates</h4>
+            <p>Stay informed about Ghana/Africa's development initiatives</p>
+          </div>
+        </div>
+        
+        <a href="contact.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 18px 45px;">
+          👥 Join DDIG Today
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="images\DDIG_Logo.png" alt="DDIG Logo">
+          <div class="footer-logo-text">
+            DDIG Ghana
+            <span>Diaspora Development Initiative</span>
+          </div>
+        </div>
+        <p>Connecting diaspora talent with Ghana's development opportunities since 2025.</p>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/ddigghana" class="social-icon" aria-label="LinkedIn">in</a>
+          <a href="https://www.facebook.com/share/1BbgDoypPM/" class="social-icon" aria-label="Facebook">f</a>
+          <a href="https://twitter.com/ddigghana" class="social-icon" aria-label="Twitter">t</a>
+          <a href="https://instagram.com/ddigghana" class="social-icon" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About DDIG</a></li>
+          <li><a href="talent-pool.html">Talent Pool</a></li>
+          <li><a href="projects.html">Development Projects</a></li>
+          <li><a href="network.html">Professional Network</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact & Connect</h3>
+        <div class="contact-info">
+          <p><strong>Email:</strong></p>
+          <a href="mailto:info@ddig-group.com">info@ddig-group.com</a>
+          
+          <p><strong>Ghana Contacts:</strong></p>
+          <a href="tel:+233243545222">🇬🇭 +233 24 354 5222</a>
+          <a href="https://wa.me/233540464857" class="whatsapp-badge" target="_blank">
+            💬 WhatsApp: +233 54 046 4857
+          </a>
+          
+          <p><strong>International:</strong></p>
+          <a href="tel:+31614650231">🌍 +31 6 1465 0231</a>
+          
+          <p><em>All contacts are clickable for calls/messages</em></p>
+        </div>
+      </div>
+
+     
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="current-year">2025</span> Diaspora Development Initiative Ghana. All rights reserved.</p>
+      <p style="margin-top: 10px; font-size: 0.85rem;">Developed by JayTech - Solutions </p>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Remove no-js class
+    document.documentElement.classList.remove('no-js');
+    
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('#main-nav');
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      });
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && 
+          !e.target.closest('.nav') && 
+          !e.target.closest('.menu-toggle') && 
+          navMenu.classList.contains('active')) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+    });
+    
+    // Newsletter form
+    const newsletterForm = document.getElementById('newsletter-form');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        // Basic validation
+        if (!email || !email.includes('@')) {
+          alert('Please enter a valid email address');
+          return;
+        }
+        
+        // Simulate submission
+        this.querySelector('input[type="email"]').value = '';
+        alert('Thank you for subscribing to DDIG updates! You\'ll receive opportunities and project updates.');
+        
+        // In production: Send to backend
+        // fetch('/api/newsletter', { method: 'POST', body: JSON.stringify({ email }) })
+      });
+    }
+    
+    // Update current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Animate cards on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all cards
+    document.querySelectorAll('.talent-card, .team-card, .benefit-item').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
+    });
+    
+    // Make all phone numbers clickable (they already are in HTML)
+    console.log('DDIG Diaspora Platform loaded successfully');
+    
+    // Security: Basic form protection
+    document.addEventListener('submit', function(e) {
+      if (e.target.tagName === 'FORM') {
+        // Add CSRF token in production
+        console.log('Form submission secured');
+      }
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href') === '#') return;
+        
+        const targetId = this.getAttribute('href');
+        if (targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            if (navMenu.classList.contains('active')) {
+              menuToggle.classList.remove('active');
+              navMenu.classList.remove('active');
+              menuToggle.setAttribute('aria-expanded', 'false');
+              document.body.style.overflow = '';
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

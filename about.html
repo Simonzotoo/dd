@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>About DDIG Ghana | Diaspora Development Initiative Ghana | Our Story, Team & Mission</title>
+  <meta name="description" content="Learn about DDIG Ghana's mission, vision, history, team, and how we're mobilizing diaspora talent for Ghana's development. Meet our leadership team.">
+  <meta name="keywords" content="About DDIG Ghana, Ghana diaspora organization, DDIG leadership team, diaspora development Ghana, Ghana NGO, diaspora talent mobilization">
+  <meta name="author" content="Diaspora Development Initiative Ghana">
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ================= ABOUT PAGE STYLES ================= */
+    :root {
+      --primary: #006b3f;
+      --secondary: #fcd116;
+      --accent: #ce1126;
+      --dark: #111111;
+      --light: #f8f9fa;
+      --gray: #666666;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+      --radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--light);
+    }
+
+    main {
+      flex: 1;
+      padding-top: 80px;
+    }
+
+    /* ================= HEADER (Consistent) ================= */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 107, 63, 0.1);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .nav-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .logo-text span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10001;
+    }
+
+    .hamburger {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: var(--primary);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 3px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .hamburger::before { top: -8px; }
+    .hamburger::after { bottom: -8px; }
+
+    .menu-toggle.active .hamburger { background: transparent; }
+    .menu-toggle.active .hamburger::before { top: 0; transform: rotate(45deg); }
+    .menu-toggle.active .hamburger::after { bottom: 0; transform: rotate(-45deg); }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--dark);
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover { color: var(--primary); }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after { width: 100%; }
+
+    .join-btn {
+      background: linear-gradient(135deg, var(--primary), #008751);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 107, 63, 0.2);
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .join-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 107, 63, 0.3);
+      background: linear-gradient(135deg, #008751, var(--primary));
+    }
+
+    /* ================= ABOUT HERO ================= */
+    .about-hero {
+      background: linear-gradient(135deg, #0a2e1d 0%, var(--primary) 100%);
+      color: white;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><polygon points="50,0 100,50 50,100 0,50" fill="white"/></svg>') repeat;
+      animation: float 30s linear infinite;
+    }
+
+    @keyframes float {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 25px;
+      line-height: 1.1;
+    }
+
+    .hero-content p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-top: 60px;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat .number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .hero-stat .label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* ================= SECTIONS ================= */
+    .section {
+      padding: 100px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 30px auto 0;
+      line-height: 1.6;
+    }
+
+    /* ================= OUR STORY ================= */
+    .story-section {
+      background: white;
+    }
+
+    .story-timeline {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline-item {
+      display: flex;
+      margin-bottom: 80px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      flex-direction: row;
+    }
+
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-year {
+      flex: 0 0 120px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .year-circle {
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(0, 107, 63, 0.2);
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding: 30px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: var(--radius);
+      margin: 0 40px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: 40px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-right: 40px;
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      transform: rotate(45deg);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before {
+      left: -15px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before {
+      right: -15px;
+    }
+
+    .timeline-content h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .timeline-content p {
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* Timeline center line */
+    .story-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      transform: translateX(-50%);
+    }
+
+    /* ================= MISSION & VISION ================= */
+    .mission-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .mission-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .mission-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .mission-icon {
+      font-size: 4rem;
+      margin-bottom: 30px;
+      color: var(--primary);
+    }
+
+    .mission-card h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .mission-card p {
+      color: var(--gray);
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+
+    /* ================= CORE VALUES ================= */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .value-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 4px solid var(--primary);
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .value-icon {
+      font-size: 3rem;
+      margin-bottom: 25px;
+      color: var(--primary);
+    }
+
+    .value-card h3 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .value-card p {
+      color: var(--gray);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* ================= LEADERSHIP TEAM ================= */
+    .team-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .team-filters {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .team-filter-btn {
+      padding: 12px 25px;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 25px;
+      color: var(--gray);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .team-filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .team-filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .team-member {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .member-photo {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .team-member:hover .member-photo {
+      transform: scale(1.05);
+    }
+
+    .member-info {
+      padding: 30px;
+    }
+
+    .member-name {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .member-role {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .member-bio {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .member-expertise {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 15px 0;
+    }
+
+    .expertise-tag {
+      padding: 5px 15px;
+      background: rgba(0, 107, 63, 0.1);
+      color: var(--primary);
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .member-contact {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .contact-link {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 107, 63, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-link:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* ================= PARTNERS & AFFILIATES ================= */
+    .partners-section {
+      background: white;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .partner-logo {
+      height: 70px;
+      width: auto;
+      opacity: 0.7;
+      transition: var(--transition);
+      filter: grayscale(100%);
+      display: block;
+      margin: 0 auto;
+    }
+
+    .partner-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    /* ================= ACHIEVEMENTS ================= */
+    .achievements-section {
+      background: linear-gradient(135deg, var(--primary), #0a2e1d);
+      color: white;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .achievement-card {
+      text-align: center;
+      padding: 40px 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: var(--transition);
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .achievement-icon {
+      font-size: 3rem;
+      margin-bottom: 25px;
+      color: var(--secondary);
+    }
+
+    .achievement-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .achievement-text {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 80px 40px 40px;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary), var(--primary));
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin-bottom: 60px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .footer-logo img {
+      height: 50px;
+    }
+
+    .footer-logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+    }
+
+    .footer-logo-text span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #ccc;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      color: var(--secondary);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .contact-info {
+      color: #ccc;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 15px;
+    }
+
+    .contact-info a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact-info a:hover {
+      color: var(--secondary);
+    }
+
+    .whatsapp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-badge:hover {
+      transform: scale(1.05);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .social-icon:hover {
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #999;
+      font-size: 0.9rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 1200px) {
+      .nav-wrapper {
+        padding: 20px 30px;
+      }
+      
+      .section {
+        padding: 80px 30px;
+      }
+      
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      
+      .story-timeline::before {
+        left: 60px;
+      }
+      
+      .timeline-item {
+        flex-direction: row !important;
+      }
+      
+      .timeline-year {
+        flex: 0 0 100px;
+      }
+      
+      .timeline-content {
+        margin-left: 40px !important;
+        margin-right: 0 !important;
+      }
+      
+      .timeline-item:nth-child(even) .timeline-content::before,
+      .timeline-item:nth-child(odd) .timeline-content::before {
+        left: -15px;
+        right: auto;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+      
+      .team-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-wrapper {
+        padding: 15px 20px;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        padding: 100px 30px 30px;
+        transition: right 0.4s ease;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+        z-index: 10000;
+      }
+      
+      .nav ul.active {
+        right: 0;
+      }
+      
+      .nav li {
+        width: 100%;
+      }
+      
+      .nav a {
+        display: block;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 1.1rem;
+      }
+      
+      .about-hero {
+        padding: 100px 20px 60px;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+      
+      .hero-stats {
+        gap: 30px;
+      }
+      
+      .hero-stat .number {
+        font-size: 2.2rem;
+      }
+      
+      .section {
+        padding: 60px 20px;
+      }
+      
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      
+      .story-timeline::before {
+        left: 40px;
+      }
+      
+      .timeline-year {
+        flex: 0 0 80px;
+      }
+      
+      .year-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+      }
+      
+      .timeline-content {
+        margin-left: 30px !important;
+        padding: 20px;
+      }
+      
+      .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+      
+      .mission-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer {
+        padding: 60px 20px 30px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 1.1rem;
+      }
+      
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero-stat {
+        width: 45%;
+      }
+      
+      .section-title h2 {
+        font-size: 1.6rem;
+      }
+      
+      .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .achievements-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Accessibility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Team Member Modal */
+    .team-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .team-modal.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .team-modal-content {
+      background: white;
+      border-radius: var(--radius);
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      width: 100%;
+      position: relative;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: var(--accent);
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="nav-wrapper">
+      <div class="logo-container">
+        <a href="index.html" aria-label="DDIG Home">
+          <img src="images\DDIG_Logo.png" alt="DDIG Logo" class="logo" width="150" height="50">
+        </a>
+        <div class="logo-text">
+          Diaspora Development Initiative Ghana
+          <span>Connecting Talent • Driving Development</span>
+        </div>
+      </div>
+
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <ul id="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="about.html" aria-current="page">About</a></li>
+          <li><a href="talent-pool.html">Talent Pool</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html" class="join-btn">Join Community</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Team Member Modal -->
+  <div class="team-modal" id="team-modal">
+    <div class="team-modal-content" id="modal-content">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close modal">×</button>
+      <!-- Modal content will be loaded dynamically -->
+    </div>
+  </div>
+
+  <main id="main-content" role="main">
+    <!-- About Hero -->
+    <section class="about-hero" aria-labelledby="about-hero-title">
+      <div class="hero-content">
+        <h1 id="about-hero-title">Mobilizing Diaspora Talent for Ghana's Development</h1>
+        <p>DDIG is a platform connecting Ghanaian/African diaspora professionals with opportunities to contribute their talents, expertise, and networks to drive sustainable development in Ghana and Africa.</p>
+        
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="number" data-count="2018">0</span>
+            <span class="label">Founded</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number" data-count="2500">0</span>
+            <span class="label">Diaspora Professionals</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number" data-count="120">0</span>
+            <span class="label">Projects Supported</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number" data-count="85">0</span>
+            <span class="label">Countries</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="section story-section" aria-labelledby="our-story">
+      <div class="section-title">
+        <h2 id="our-story">Our Story</h2>
+        <p>The journey of connecting diaspora talent with Ghana's development needs</p>
+      </div>
+      
+      <div class="story-timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">
+            <div class="year-circle">2018</div>
+          </div>
+          <div class="timeline-content">
+            <h3>Founding Vision</h3>
+            <p>DDIG was founded by a group of Ghanaian diaspora professionals who recognized the untapped potential of diaspora expertise for national development. The vision was simple: create a structured platform to connect diaspora talent with development opportunities in Ghana.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">
+            <div class="year-circle">2019</div>
+          </div>
+          <div class="timeline-content">
+            <h3>First Projects & Registration</h3>
+            <p>Successfully completed our first three pilot projects in education and healthcare. Officially registered as a non-governmental organization in Ghana, establishing our legal framework and governance structure.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">
+            <div class="year-circle">2021</div>
+          </div>
+          <div class="timeline-content">
+            <h3>Digital Platform Launch</h3>
+            <p>Launched our digital talent mobilization platform, enabling diaspora professionals worldwide to register their expertise and connect with development projects in Ghana. Expanded to cover multiple sectors including technology, energy, and governance.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">
+            <div class="year-circle">2023</div>
+          </div>
+          <div class="timeline-content">
+            <h3>International Partnerships</h3>
+            <p>Established formal partnerships with 15+ international diaspora organizations and development agencies. Our network grew to include professionals from 60+ countries across six continents.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">
+            <div class="year-circle">2025</div>
+          </div>
+          <div class="timeline-content">
+            <h3>Present & Future</h3>
+            <p>Currently supporting 45+ active development projects across Ghana. Our focus is expanding to all 16 regions of Ghana, with emphasis on sustainable development goals and measurable impact through diaspora expertise mobilization.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="section mission-section" aria-labelledby="mission-vision">
+      <div class="section-title">
+        <h2 id="mission-vision">Our Mission & Vision</h2>
+        <p>Guiding principles that drive our work and impact</p>
+      </div>
+      
+      <div class="mission-grid">
+        <div class="mission-card">
+          <div class="mission-icon">🎯</div>
+          <h3>Our Mission</h3>
+          <p>To create a sustainable platform that effectively mobilizes Ghanaian and African diaspora expertise, resources, and networks to drive measurable development impact across Ghana, focusing on education, healthcare, technology, energy, and economic empowerment.</p>
+        </div>
+        
+        <div class="mission-card">
+          <div class="mission-icon">🌟</div>
+          <h3>Our Vision</h3>
+          <p>A Ghana where diaspora talent and resources are seamlessly integrated into national development, creating a model for diaspora engagement that other African nations can replicate, leading to accelerated sustainable development across the continent.</p>
+        </div>
+        
+        <div class="mission-card">
+          <div class="mission-icon">🤝</div>
+          <h3>Our Approach</h3>
+          <p>We employ a three-pillar approach: Talent Mobilization (identifying and engaging diaspora expertise), Project Matching (connecting talent with development needs), and Impact Measurement (ensuring sustainable, measurable outcomes).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="section" aria-labelledby="core-values">
+      <div class="section-title">
+        <h2 id="core-values">Our Core Values</h2>
+        <p>The principles that guide everything we do</p>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🤲</div>
+          <h3>Community First</h3>
+          <p>All development initiatives are community-driven, ensuring local needs and voices guide project design and implementation for maximum relevance and sustainability.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">🔍</div>
+          <h3>Transparency & Accountability</h3>
+          <p>We maintain open communication about our operations, finances, and impact. Regular reporting ensures stakeholders can track progress and outcomes.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">🌱</div>
+          <h3>Sustainability</h3>
+          <p>We design programs that create lasting impact beyond our direct involvement, building local capacity and ensuring long-term community benefits.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <h3>Collaboration</h3>
+          <p>We believe in the power of partnerships – between diaspora and local communities, between sectors, and across borders – to achieve shared development goals.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">💡</div>
+          <h3>Innovation</h3>
+          <p>We embrace creative solutions and leverage technology to maximize efficiency, reach, and impact in all our development initiatives.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">❤️</div>
+          <h3>Cultural Respect</h3>
+          <p>We honor and incorporate local traditions, knowledge systems, and cultural practices, ensuring development work respects and strengthens community identity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="section team-section" aria-labelledby="leadership-team">
+      <div class="section-title">
+        <h2 id="leadership-team">Meet Our Leadership Team</h2>
+        <p>The dedicated professionals driving diaspora talent mobilization for Ghana's development</p>
+      </div>
+      
+      <div class="team-filters">
+        <button class="team-filter-btn active" data-team="all">All Leadership</button>
+        <button class="team-filter-btn" data-team="executive">Executive Team</button>
+        <button class="team-filter-btn" data-team="technical">Technical Advisors</button>
+        <button class="team-filter-btn" data-team="regional">Regional Coordinators</button>
+      </div>
+      
+      <div class="team-grid" id="team-container">
+        <!-- Team members will be loaded dynamically -->
+      </div>
+    </section>
+
+    <!-- Partners & Affiliates -->
+      <!--<section class="section partners-section" aria-labelledby="partners">
+      <div class="section-title">
+        <h2 id="partners">Our Partners & Affiliates</h2>
+        <p>Collaborating with organizations worldwide to maximize development impact</p>
+      </div>
+      
+      <div class="partners-grid">
+        <img src="partners/partner1.png" alt="Ministry of Foreign Affairs Ghana" class="partner-logo" loading="lazy">
+        <img src="partners/partner2.png" alt="Ghana Diaspora Affairs Office" class="partner-logo" loading="lazy">
+        <img src="partners/partner3.png" alt="UNDP Ghana" class="partner-logo" loading="lazy">
+        <img src="partners/partner4.png" alt="World Bank Ghana" class="partner-logo" loading="lazy">
+        <img src="partners/partner5.png" alt="African Development Bank" class="partner-logo" loading="lazy">
+        <img src="partners/partner6.png" alt="Ghana Investment Promotion Centre" class="partner-logo" loading="lazy">
+        <img src="partners/partner7.png" alt="Ghana Exports Promotion Authority" class="partner-logo" loading="lazy">
+        <img src="partners/partner8.png" alt="Ghana Chamber of Commerce" class="partner-logo" loading="lazy">
+      </div>
+    </section> -->
+
+    <!-- Achievements -->
+    <section class="section achievements-section" aria-labelledby="achievements">
+      <div class="section-title">
+        <h2 id="achievements" style="color: white;">Our Impact & Achievements</h2>
+        <p style="color: rgba(255, 255, 255, 0.9);">Measurable results from our diaspora talent mobilization efforts</p>
+      </div>
+      
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-icon">👥</div>
+          <span class="achievement-number" data-count="2500">0</span>
+          <div class="achievement-text">Diaspora Professionals Registered</div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">🚀</div>
+          <span class="achievement-number" data-count="120">0</span>
+          <div class="achievement-text">Development Projects Supported</div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">🌍</div>
+          <span class="achievement-number" data-count="85">0</span>
+          <div class="achievement-text">Countries Represented</div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">💼</div>
+          <span class="achievement-number" data-count="45">0</span>
+          <div class="achievement-text">Industry Sectors Covered</div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">🤝</div>
+          <span class="achievement-number" data-count="350">0</span>
+          <div class="achievement-text">Successful Mentorship Matches</div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">📈</div>
+          <span class="achievement-number" data-count="92">0%</span>
+          <div class="achievement-text">Project Success Rate</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="images\DDIG_Logo.png" alt="DDIG Logo">
+          <div class="footer-logo-text">
+            DDIG Ghana
+            <span>Diaspora Development Initiative</span>
+          </div>
+        </div>
+        <p>Connecting diaspora talent with Ghana's development opportunities since 2025.</p>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/ddigghana" class="social-icon" aria-label="LinkedIn">in</a>
+          <a href="https://facebook.com/ddigghana" class="social-icon" aria-label="Facebook">f</a>
+          <a href="https://twitter.com/ddigghana" class="social-icon" aria-label="Twitter">t</a>
+          <a href="https://instagram.com/ddigghana" class="social-icon" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>About DDIG</h3>
+        <ul class="footer-links">
+          <li><a href="about.html#our-story">Our Story</a></li>
+          <li><a href="about.html#mission-vision">Mission & Vision</a></li>
+          <li><a href="about.html#core-values">Core Values</a></li>
+          <li><a href="about.html#leadership-team">Leadership Team</a></li>
+          <li><a href="about.html#partners">Partners</a></li>
+          <li><a href="about.html#achievements">Achievements</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact Leadership</h3>
+        <div class="contact-info">
+          <p><strong>Executive Office:</strong></p>
+          <a href="mailto:info@ddig-group.com">executive@ddig.com</a>
+          
+          <p><strong>Board Secretariat:</strong></p>
+          <a href="mailto:info@ddig-group.com">secretary@ddig.com</a>
+          
+          <p><strong>General Inquiries:</strong></p>
+          <a href="mailto:info@ddig-group.com">info@ddig-group.com</a>
+          
+          <p><strong>Phone Contacts:</strong></p>
+          <a href="tel:+233243545222">🇬🇭 +233 24 354 5222</a>
+          <a href="https://wa.me/233540464857" class="whatsapp-badge" target="_blank">
+            💬 WhatsApp: +233 54 046 4857
+          </a>
+          <a href="tel:+31614650231">🌍 +31 6 1465 0231</a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Headquarters</h3>
+        <div class="contact-info">
+          <p><strong>Address:</strong></p>
+          <p>DDIG House<br>
+          Airport Residential Area<br>
+          Accra, Ghana</p>
+          
+          <p><strong>Office Hours:</strong></p>
+          <p>Monday - Friday: 8:00 AM - 5:00 PM GMT</p>
+          
+          <p><strong>Visits:</strong></p>
+          <p>By appointment only</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="current-year">2025</span> Diaspora Development Initiative Ghana. All rights reserved.</p>
+      <p style="margin-top: 10px; font-size: 0.85rem;">Developed by JayTech-Solutions</p>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Remove no-js class
+    document.documentElement.classList.remove('no-js');
+    
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('#main-nav');
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      });
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && 
+          !e.target.closest('.nav') && 
+          !e.target.closest('.menu-toggle') && 
+          navMenu.classList.contains('active')) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Team Data with Photos
+    const teamData = [
+      {
+        id: 1,
+        name: "Samson J Nibi",
+        role: "President & Founder",
+        team: "executive",
+        photo: "images/president.jpg",
+        bio: "Founder of DDIG with 25+ years experience in international development and diaspora engagement. ",
+        expertise: ["Diaspora Engagement", "Strategic Planning", "International Development", "Leadership"],
+        location: "Accra, Ghana",
+        email: "sjnibi@gmail.com",
+        linkedin: "https://www.linkedin.com/in/samson2nibi?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        achievements: [
+          "Led establishment of DDIG in 2018",
+          "Authored Ghana's Diaspora Engagement Strategy",
+          "Recipient of 2023 Diaspora Leadership Award"
+        ]
+      },
+      {
+        id: 2,
+        name: "Guno Johnson Mac Intosch",
+        role: "Vice President, Programs",
+        team: "executive",
+        photo: "images/vice president.jpg",
+        bio: "20+ years in program management and development implementation across Africa.",
+        expertise: ["Program Management", "Monitoring & Evaluation", "Capacity Building", "Strategic Partnerships"],
+        location: "Accra, Ghana",
+        email: "gunomacintosch@gmail.com",
+        linkedin: "https://linkedin.com/in/yaw-piese",
+        achievements: [
+          "Managed $50M+ development portfolio",
+          "Developed DDIG's project evaluation framework",
+          "Established 15+ international partnerships"
+        ]
+      },
+      {
+        id: 3,
+        name: "Dr. Amanake Kisseih",
+        role: "2nd Vice President, Technical",
+        team: "executive",
+        photo: "images/dr.jpg",
+        bio: "Renowned expert in environmental science and sustainable development. ",
+        expertise: ["Environmental Science", "Climate Resilience", "Sustainable Development", "Technical Advisory"],
+        location: "Accra, Ghana",
+        email: "amanarhk@gmail.com",
+        linkedin: "https://linkedin.com/in/dr-amanake",
+        achievements: [
+          "Lead author of Ghana's Climate Adaptation Plan",
+          "Developed 10+ environmental frameworks",
+          "UN Environment Programme Technical Advisor"
+        ]
+      },
+      {
+        id: 4,
+        name: "Hope Tsatsu Agbenyo",
+        role: "Secretary General",
+        team: "executive",
+        photo: "images/hope.jpg",
+        bio: "Experienced administrator with 10+ years in NGO management and governance. ",
+        expertise: ["Administration", "Governance", "Policy Development", "Stakeholder Engagement"],
+        location: "Accra, Ghana",
+        email: "hopetsatsuagbenyo@gmail.com",
+        linkedin: "https://linkedin.com/in/hope-agbenyo",
+        achievements: [
+          "Established DDIG's governance framework",
+          "Led organizational accreditation process",
+          "Managed donor relations with 20+ partners"
+        ]
+      },
+      {
+        id: 5,
+        name: "Ethel Agamah",
+        role: "Treasurer & Finance Director",
+        team: "executive",
+        photo: "images/Akorfa.jpg",
+        bio: "Accountant with 4+ years in financial management for development organizations. ",
+        expertise: ["Financial Management", "Resource Mobilization", "Audit & Compliance", "Grant Management"],
+        location: "Accra, Ghana",
+        email: "agamakorfa246@gmail.com",
+        linkedin: "https://linkedin.com/in/ethel-agamah",
+        achievements: [
+          "Managed $30M+ annual budget",
+          "Established financial controls for 4+ projects",
+          "Secured 8 major international grants"
+        ]
+      },
+      {
+        id: 6,
+        name: "Nene Amos Martey Osabutey",
+        role: "National Coordinator",
+        team: "executive",
+        photo: "images/NENE.jpg",
+        bio: "Community development specialist with deep understanding of Ghana's regional dynamics. 2+ years working with rural communities across all 16 regions.",
+        expertise: ["Community Development", "Local Governance", "Stakeholder Management", "Rural Development"],
+        location: "Accra, Ghana",
+        email: "neneamosmartey@gmail.com",
+        linkedin: "https://www.linkedin.com/in/nene-amos-matey-osabutey-86753235b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        achievements: [
+          "Established DDIG presence in all 16 regions",
+          "Facilitated 100+ community engagements",
+          "Led successful implementation of 35+ projects"
+        ]
+      },
+      {
+        id: 7,
+        name: "Prince Ankomah-Appiah",
+        role: "Public Relations Officer",
+        team: "executive",
+        photo: "images/prince.png",
+        bio: "Communications expert with 5+ years in media relations and public engagement.  BSC in Business Management and Computer Studies  - Wisconsin International University College - Ghana",
+        expertise: ["Public Relations", "Media Engagement", "Strategic Communications", "Brand Management"],
+        location: "Accra, Ghana",
+        email: "prince222.paa@gmail.com",
+        linkedin: "https://www.linkedin.com/in/prince-ankomah-appiah-8bb85527b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        achievements: [
+          "Increased DDIG media presence by 300%",
+          "Managed successful rebranding campaign",
+          "Established relationships with 50+ media outlets"
+        ]
+      },
+      /*
+      {
+        id: 8,
+        name: "Dr. Akosua Mensah",
+        role: "Technical Advisor, Energy & Infrastructure",
+        team: "technical",
+        photo: "team/akosua-mensah.jpg",
+        bio: "Renewable energy expert based in Germany with 15+ years in solar energy projects. PhD in Energy Systems from Technical University of Berlin. Consultant to German Development Agency (GIZ).",
+        expertise: ["Renewable Energy", "Solar Technology", "Infrastructure Development", "German-Ghana Relations"],
+        location: "Berlin, Germany",
+        email: "energy-advisor@ddig.com",
+        linkedin: "https://linkedin.com/in/akosua-mensah"
+      },
+      {
+        id: 9,
+        name: "Kwame Osei",
+        role: "Technical Advisor, Finance & Technology",
+        team: "technical",
+        photo: "team/kwame-osei.jpg",
+        bio: "Fintech expert based in Silicon Valley with 20+ years experience. Former Director at PayPal. Currently advising African fintech startups and serving as venture partner at early-stage VC firm.",
+        expertise: ["Fintech", "Investment", "Technology Transfer", "Startup Ecosystem"],
+        location: "San Francisco, USA",
+        email: "fintech-advisor@ddig.com",
+        linkedin: "https://linkedin.com/in/kwame-osei"
+      },
+      {
+        id: 10,
+        name: "Dr. Ama Serwaa",
+        role: "Technical Advisor, Healthcare",
+        team: "technical",
+        photo: "team/ama-serwaa.jpg",
+        bio: "Public health specialist based in Canada with 18+ years in global health. PhD in Public Health from University of Toronto. Former consultant to World Health Organization Africa Region.",
+        expertise: ["Public Health", "Healthcare Systems", "Disease Prevention", "Capacity Building"],
+        location: "Toronto, Canada",
+        email: "health-advisor@ddig.com",
+        linkedin: "https://linkedin.com/in/ama-serwaa"
+      },
+      {
+        id: 11,
+        name: "Kofi Mensah",
+        role: "Regional Coordinator, North America",
+        team: "regional",
+        photo: "team/kofi-mensah.jpg",
+        bio: "Based in New York with 15+ years in diaspora community organizing. Previously served as President of Ghanaian Association of New York. Extensive network across US and Canadian diaspora communities.",
+        expertise: ["Diaspora Organizing", "Community Engagement", "Event Management", "Cross-cultural Relations"],
+        location: "New York, USA",
+        email: "na-coordinator@ddig.com",
+        linkedin: "https://linkedin.com/in/kofi-mensah-na"
+      },
+      {
+        id: 12,
+        name: "Yaa Asantewaa",
+        role: "Regional Coordinator, Europe",
+        team: "regional",
+        photo: "team/yaa-asantewaa.jpg",
+        bio: "Based in London with 12+ years in international development coordination. Previously worked with African Development Bank Europe Office. Extensive experience connecting European diaspora with African development initiatives.",
+        expertise: ["European Relations", "Development Coordination", "Grant Writing", "Partnership Building"],
+        location: "London, UK",
+        email: "europe-coordinator@ddig.com",
+        linkedin: "https://linkedin.com/in/yaa-asantewaa"
+      } */
+    ];
+    
+    // DOM Elements
+    const teamContainer = document.getElementById('team-container');
+    const teamFilterButtons = document.querySelectorAll('.team-filter-btn');
+    const teamModal = document.getElementById('team-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    
+    // Animated counters
+    function animateCounters() {
+      const counters = document.querySelectorAll('.number, .achievement-number');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        if (isNaN(target)) return;
+        
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+          current += step;
+          if (current < target) {
+            counter.textContent = Math.floor(current);
+            setTimeout(updateCounter, 16);
+          } else {
+            counter.textContent = counter.classList.contains('achievement-number') && target > 1000 ? 
+              target.toLocaleString() : target;
+          }
+        };
+        
+        updateCounter();
+      });
+    }
+    
+    // Trigger counters when in view
+    const heroSection = document.querySelector('.about-hero');
+    const achievementsSection = document.querySelector('.achievements-section');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(animateCounters, 500);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    if (heroSection) observer.observe(heroSection);
+    if (achievementsSection) observer.observe(achievementsSection);
+    
+    // Initialize team display
+    let currentTeamFilter = 'all';
+    
+    function renderTeam(filter = 'all') {
+      teamContainer.innerHTML = '';
+      
+      const filteredTeam = teamData.filter(member => {
+        if (filter === 'all') return true;
+        return member.team === filter;
+      });
+      
+      if (filteredTeam.length === 0) {
+        teamContainer.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 60px; color: var(--gray);">
+            <h3>No team members found</h3>
+          </div>
+        `;
+        return;
+      }
+      
+      filteredTeam.forEach(member => {
+        const teamCard = document.createElement('div');
+        teamCard.className = 'team-member';
+        teamCard.innerHTML = `
+          <img src="${member.photo}" alt="${member.name} - ${member.role}" class="member-photo" loading="lazy">
+          <div class="member-info">
+            <h3 class="member-name">${member.name}</h3>
+            <p class="member-role">${member.role}</p>
+            <p class="member-bio">${member.bio.substring(0, 120)}...</p>
+            
+            <div class="member-expertise">
+              ${member.expertise.slice(0, 3).map(skill => `<span class="expertise-tag">${skill}</span>`).join('')}
+            </div>
+            
+            <div class="member-contact">
+              <a href="mailto:${member.email}" class="contact-link" aria-label="Email ${member.name}">
+                ✉️
+              </a>
+              <a href="${member.linkedin}" target="_blank" class="contact-link" aria-label="${member.name}'s LinkedIn">
+                in
+              </a>
+              <button class="contact-link view-profile-btn" data-member-id="${member.id}" aria-label="View ${member.name}'s full profile">
+                👁️
+              </button>
+            </div>
+          </div>
+        `;
+        
+        teamContainer.appendChild(teamCard);
+      });
+      
+      // Add event listeners to view profile buttons
+      document.querySelectorAll('.view-profile-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const memberId = parseInt(btn.dataset.memberId);
+          const member = teamData.find(m => m.id === memberId);
+          if (member) {
+            showMemberModal(member);
+          }
+        });
+      });
+    }
+    
+    // Show team member modal
+    function showMemberModal(member) {
+      modalContent.innerHTML = `
+        <div style="padding: 40px;">
+          <div style="display: flex; align-items: flex-start; gap: 30px; margin-bottom: 40px;">
+            <img src="${member.photo}" alt="${member.name}" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 5px solid var(--primary); flex-shrink: 0;">
+            <div style="flex: 1;">
+              <h2 style="color: var(--primary); margin-bottom: 10px; font-size: 2rem;">${member.name}</h2>
+              <p style="color: var(--accent); font-size: 1.3rem; font-weight: 600; margin-bottom: 15px;">${member.role}</p>
+              <p style="color: var(--gray); margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                📍 ${member.location}
+              </p>
+              
+              <div style="display: flex; gap: 15px; margin-top: 25px;">
+                <a href="mailto:${member.email}" style="padding: 10px 25px; background: var(--primary); color: white; border-radius: 25px; text-decoration: none; font-weight: 600; transition: var(--transition);">
+                  Email ${member.name.split(' ')[0]}
+                </a>
+                <a href="${member.linkedin}" target="_blank" style="padding: 10px 25px; background: #0077b5; color: white; border-radius: 25px; text-decoration: none; font-weight: 600; transition: var(--transition);">
+                  LinkedIn Profile
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 40px;">
+            <h3 style="color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #f1f5f9;">Professional Biography</h3>
+            <p style="color: var(--gray); line-height: 1.8; font-size: 1.1rem;">${member.bio}</p>
+          </div>
+          
+          <div style="margin-bottom: 40px;">
+            <h3 style="color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #f1f5f9;">Areas of Expertise</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+              ${member.expertise.map(skill => `<span style="padding: 10px 20px; background: rgba(0, 107, 63, 0.1); color: var(--primary); border-radius: 25px; font-weight: 600;">${skill}</span>`).join('')}
+            </div>
+          </div>
+          
+          ${member.achievements ? `
+            <div style="margin-bottom: 40px;">
+              <h3 style="color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #f1f5f9;">Key Achievements</h3>
+              <ul style="color: var(--gray); line-height: 1.8; padding-left: 20px;">
+                ${member.achievements.map(achievement => `<li style="margin-bottom: 10px;">${achievement}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+          
+          <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 2px solid #f1f5f9;">
+            <p style="color: var(--gray); margin-bottom: 20px;">Contact ${member.name.split(' ')[0]} for:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+              <span style="padding: 8px 20px; background: rgba(0, 107, 63, 0.1); color: var(--primary); border-radius: 20px; font-size: 0.9rem;">Consultation Requests</span>
+              <span style="padding: 8px 20px; background: rgba(0, 107, 63, 0.1); color: var(--primary); border-radius: 20px; font-size: 0.9rem;">Speaking Engagements</span>
+              <span style="padding: 8px 20px; background: rgba(0, 107, 63, 0.1); color: var(--primary); border-radius: 20px; font-size: 0.9rem;">Partnership Opportunities</span>
+              <span style="padding: 8px 20px; background: rgba(0, 107, 63, 0.1); color: var(--primary); border-radius: 20px; font-size: 0.9rem;">Expert Advice</span>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      teamModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    // Team filter functionality
+    teamFilterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        teamFilterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        currentTeamFilter = button.dataset.team;
+        renderTeam(currentTeamFilter);
+      });
+    });
+    
+    // Close modal functionality
+    modalCloseBtn.addEventListener('click', () => {
+      teamModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    teamModal.addEventListener('click', (e) => {
+      if (e.target === teamModal) {
+        teamModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Close modal on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && teamModal.classList.contains('active')) {
+        teamModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Initialize team display
+    renderTeam();
+    
+    // Update current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Animate timeline items on scroll
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 200);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    // Animate cards on scroll
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 100);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    // Observe all animated elements
+    setTimeout(() => {
+      // Timeline items
+      document.querySelectorAll('.timeline-item').forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        timelineObserver.observe(item);
+      });
+      
+      // Cards
+      document.querySelectorAll('.mission-card, .value-card, .team-member, .achievement-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        cardObserver.observe(card);
+      });
+    }, 100);
+    
+    // Security: Log page views
+    console.log('About page loaded securely at: ' + new Date().toISOString());
+  </script>
+</body>
+</html>
