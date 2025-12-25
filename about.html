@@ -954,114 +954,127 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .nav-wrapper {
-        padding: 15px 20px;
-      }
-      
-      .menu-toggle {
-        display: block;
-      }
-      
-      .nav ul {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: white;
-        flex-direction: column;
-        gap: 0;
-        padding: 100px 30px 30px;
-        transition: right 0.4s ease;
-        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
-        z-index: 10000;
-      }
-      
-      .nav ul.active {
-        right: 0;
-      }
-      
-      .nav li {
-        width: 100%;
-      }
-      
-      .nav a {
-        display: block;
-        padding: 18px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        font-size: 1.1rem;
-      }
-      
-      .about-hero {
-        padding: 100px 20px 60px;
-      }
-      
-      .hero-content h1 {
-        font-size: 2.2rem;
-      }
-      
-      .hero-content p {
-        font-size: 1.1rem;
-      }
-      
-      .hero-stats {
-        gap: 30px;
-      }
-      
-      .hero-stat .number {
-        font-size: 2.2rem;
-      }
-      
-      .section {
-        padding: 60px 20px;
-      }
-      
-      .section-title h2 {
-        font-size: 1.8rem;
-      }
-      
-      .story-timeline::before {
-        left: 40px;
-      }
-      
-      .timeline-year {
-        flex: 0 0 80px;
-      }
-      
-      .year-circle {
-        width: 60px;
-        height: 60px;
-        font-size: 1.2rem;
-      }
-      
-      .timeline-content {
-        margin-left: 30px !important;
-        padding: 20px;
-      }
-      
-      .team-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-      }
-      
-      .mission-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .values-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .footer {
-        padding: 60px 20px 30px;
-      }
-      
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-    }
+@media (max-width: 768px) {
+
+  /* ===== Navigation ===== */
+  .nav-wrapper {
+    padding: 15px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    gap: 0;
+    padding: 100px 30px 30px;
+    transition: right 0.4s ease;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+  }
+
+  .nav ul.active {
+    right: 0;
+  }
+
+  .nav li {
+    width: 100%;
+  }
+
+  .nav a {
+    display: block;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+  }
+
+  /* ===== Hero ===== */
+  .about-hero {
+    padding: 100px 20px 60px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .hero-stats {
+    gap: 30px;
+  }
+
+  .hero-stat .number {
+    font-size: 2.2rem;
+  }
+
+  /* ===== Sections ===== */
+  .section {
+    padding: 60px 20px;
+  }
+
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+
+  /* ===== Timeline ===== */
+  .story-timeline::before {
+    left: 40px;
+  }
+
+  .timeline-year {
+    flex: 0 0 80px;
+  }
+
+  .year-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+  }
+
+  .timeline-content {
+    margin-left: 30px !important;
+    padding: 20px;
+  }
+
+  /* ===== Team Section (FIXED IMAGE ISSUE) ===== */
+  .team-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .member-photo {
+    height: 340px;          /* prevents cropped heads */
+    object-position: top;  /* keep face visible */
+  }
+
+  /* ===== Layout Grids ===== */
+  .mission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ===== Footer ===== */
+  .footer {
+    padding: 60px 20px 30px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
 
     @media (max-width: 480px) {
       .logo-text {
@@ -1132,7 +1145,7 @@
       background: white;
       border-radius: var(--radius);
       max-width: 800px;
-      max-height: 90vh;
+      max-height: 100vh;
       overflow-y: auto;
       width: 100%;
       position: relative;
