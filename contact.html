@@ -15,6 +15,10 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
   
   <!-- Fonts -->
+   <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -198,6 +202,247 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(0, 107, 63, 0.3);
       background: linear-gradient(135deg, #008751, var(--primary));
+    }
+
+    /* ================= SUPPORT BUTTON & MODAL STYLES ================= */
+    .support-button-container {
+      text-align: center;
+      margin: 60px 0;
+      padding: 0 20px;
+    }
+
+    .support-btn {
+      background: linear-gradient(135deg, var(--accent), #e63946);
+      color: white;
+      border: none;
+      padding: 22px 45px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(206, 17, 38, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      animation: pulse 2s infinite;
+    }
+
+    .support-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #e63946, var(--accent));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .support-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(206, 17, 38, 0.4);
+    }
+
+    .support-btn:hover::before {
+      opacity: 1;
+    }
+
+    .support-btn:active {
+      transform: translateY(0) scale(1);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 10px 30px rgba(206, 17, 38, 0.3); }
+      50% { box-shadow: 0 10px 40px rgba(206, 17, 38, 0.5); }
+      100% { box-shadow: 0 10px 30px rgba(206, 17, 38, 0.3); }
+    }
+
+    .support-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .support-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .support-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(30px);
+      transition: transform 0.4s ease;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .support-modal.active .support-card {
+      transform: translateY(0);
+    }
+
+    .close-support {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: none;
+      border: none;
+      font-size: 2.5rem;
+      color: var(--gray);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+      border-radius: 50%;
+    }
+
+    .close-support:hover {
+      color: var(--accent);
+      background: rgba(206, 17, 38, 0.1);
+    }
+
+    .support-card h2 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      text-align: center;
+      padding-right: 30px;
+    }
+
+    .support-card > p {
+      color: var(--gray);
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .support-method {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 25px;
+      border-left: 5px solid var(--primary);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .support-method:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .support-method h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .copy-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0, 107, 63, 0.1);
+    }
+
+    .copy-row:last-child {
+      border-bottom: none;
+    }
+
+    .copy-row span {
+      color: var(--dark);
+      font-size: 1.1rem;
+      font-weight: 500;
+      word-break: break-all;
+      padding-right: 15px;
+    }
+
+    .copy-row strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .copy-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .copy-btn:hover {
+      background: #008751;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 107, 63, 0.3);
+    }
+
+    .copy-btn.copied {
+      background: var(--secondary);
+      color: var(--dark);
+    }
+
+    .support-link {
+      display: inline-block;
+      background: linear-gradient(135deg, #0070ba, #00a8e8);
+      color: white;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      text-align: center;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .support-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 112, 186, 0.3);
+      background: linear-gradient(135deg, #00a8e8, #0070ba);
+    }
+
+    .support-note {
+      text-align: center;
+      color: var(--primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 2px dashed var(--secondary);
     }
 
     /* ================= CONTACT HERO ================= */
@@ -987,8 +1232,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #25D366;
-      color: white;
+      background: #04140a;
+      color: rgb(10, 227, 75);
       padding: 8px 15px;
       border-radius: 20px;
       text-decoration: none;
@@ -1007,6 +1252,7 @@
       margin-top: 25px;
     }
 
+    
     .social-icon {
       width: 40px;
       height: 40px;
@@ -1164,6 +1410,45 @@
         grid-template-columns: 1fr;
         gap: 40px;
       }
+
+      /* Support Modal Responsive */
+      .support-btn {
+        padding: 18px 35px;
+        font-size: 1.2rem;
+      }
+
+      .support-card {
+        padding: 30px 20px;
+        margin: 20px;
+      }
+
+      .support-card h2 {
+        font-size: 1.8rem;
+        padding-right: 20px;
+      }
+
+      .support-method {
+        padding: 20px;
+      }
+
+      .support-method h3 {
+        font-size: 1.3rem;
+      }
+
+      .copy-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .copy-row span {
+        font-size: 1rem;
+      }
+
+      .copy-btn {
+        width: 100%;
+        margin-top: 5px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1185,6 +1470,11 @@
       
       .contact-option {
         padding: 30px 20px;
+      }
+
+      .support-btn {
+        padding: 16px 30px;
+        font-size: 1.1rem;
       }
     }
 
@@ -1221,6 +1511,54 @@
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
+    .social-links {
+  display: flex;
+  gap: 14px;
+}
+
+.social-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #ffffff;
+}
+
+/* Brand backgrounds */
+.linkedin {
+  background: #0a66c2;
+}
+
+.facebook {
+  background: #1877f2;
+}
+
+.twitter {
+  background: #000000; /* X is black */
+}
+
+.instagram {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+}
+
+/* Subtle hover */
+.social-icon:hover {
+  transform: scale(1.08);
+}
   </style>
 </head>
 <body>
@@ -1250,16 +1588,12 @@
           <li><a href="about.html">About</a></li>
           <li><a href="talent-pool.html">Talent Pool</a></li>
           <li><a href="projects.html">Projects</a></li>
+           <li><a href="news_section.html">News Section</a></li>
           <li><a class="active" href="contact.html" aria-current="page">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
-  <!-- Copy Notification -->
-  <div class="copy-notification" id="copy-notification">
-    📋 Email address copied to clipboard!
-  </div>
 
   <main id="main-content" role="main">
     <!-- Contact Hero -->
@@ -1275,6 +1609,139 @@
         </a>
       </div>
     </section>
+
+    <!-- SUPPORT BUTTON SECTION -->
+    <div class="support-button-container">
+      <button class="support-btn" id="openSupport">
+        <i class="fas fa-heart"></i> Click to Support DDIG financially
+      </button>
+    </div>
+
+    <!-- SUPPORT MODAL -->
+    <div class="support-modal" id="supportModal">
+      <div class="support-card">
+        <button class="close-support" id="closeSupport" aria-label="Close">&times;</button>
+        
+        <h2>Support DDIG Ghana</h2>
+        <p>Your generous support empowers diaspora-led development initiatives across Ghana.</p>
+
+
+        <div style="margin-top: 40px; padding: 30px; background: rgba(0, 107, 63, 0.05); border-radius: var(--radius);">
+  <h3 style="color: var(--primary); margin-bottom: 20px;">
+  </h3>
+ 
+  
+  
+</div>
+
+<script>
+document.getElementById('supportNotificationForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  const submitBtn = this.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+  
+  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  submitBtn.disabled = true;
+  
+  fetch('backend/submit.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message);
+    if (data.success) {
+      this.reset();
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Notification failed. Please email us directly at info@ddig-group.com');
+  })
+  .finally(() => {
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
+  });
+});
+</script>
+        <!-- Mobile Money -->
+        <div class="support-method">
+          <h3><i class="fas fa-mobile-alt"></i> Mobile Money (Ghana)</h3>
+          
+          <div class="copy-row">
+            <span><strong>Network:</strong> MTN Mobile Money</span>
+          </div>
+          
+          <div class="copy-row">
+            <span><strong>Number:</strong> 024 354 5222</span>
+            <button class="copy-btn" data-copy="0243545222">Copy Number</button>
+          </div>
+          
+          <div class="copy-row">
+            <span><strong>Name:</strong> Diaspora Development Initiative Ghana</span>
+          </div>
+          
+          <div class="copy-row">
+            <span><strong>Reference:</strong> DDIG-SUPPORT</span>
+            <button class="copy-btn" data-copy="DDIG-SUPPORT">Copy Reference</button>
+          </div>
+        </div>
+
+        <!-- PayPal -->
+        <div class="support-method">
+          <h3><i class="fab fa-paypal"></i> PayPal (International)</h3>
+          
+          <div class="copy-row">
+            <span><strong>PayPal Address:</strong> paypal.me/ddigghana</span>
+            <button class="copy-btn" data-copy="paypal.me/ddigghana">Copy Address</button>
+          </div>
+          
+          <div class="copy-row">
+            <span><strong>Email:</strong> donations@ddig-group.com</span>
+            <button class="copy-btn" data-copy="donations@ddig-group.com">Copy Email</button>
+          </div>
+          
+          <a href="https://www.paypal.me/ddigghana" target="_blank" class="support-link">
+            <i class="fab fa-paypal"></i> Donate via PayPal
+          </a>
+        </div>
+
+        <!-- Bank Transfer -->
+        <div class="support-method">
+          <h3><i class="fas fa-university"></i> Bank Transfer (ABSA )</h3>
+          
+          <div class="copy-row">
+            <span><strong>Account Name:</strong> Diaspora Development Initiative Ghana</span>
+          </div>
+          
+          <div class="copy-row">
+            <span><strong>Bank:</strong> ABSA Bank Ghana</span>
+          </div>
+          
+          <div class="copy-row">
+            <span><strong>Account Number:</strong> 1234567890</span>
+            <button class="copy-btn" data-copy="1234567890">Copy Account</button>
+          </div>
+          
+          <div class="copy-row">
+            <span><strong>Branch:</strong> Airport City Branch (001)</span>
+          </div>
+          
+          <div class="copy-row">
+            <span><strong>SWIFT Code:</strong> BARCGHAC</span>
+            <button class="copy-btn" data-copy="BARCGHAC">Copy SWIFT</button>
+          </div>
+          
+          <div class="copy-row">
+            <span><strong>Currency:</strong> Ghana Cedi (GHS) / USD</span>
+          </div>
+        </div>
+
+        <p class="support-note"> Thank you for supporting diaspora-led development in Ghana!</p>
+      </div>
+    </div>
 
     <!-- Contact Methods -->
     <section class="section contact-methods" aria-labelledby="contact-methods">
@@ -1550,11 +2017,59 @@
         </div>
         <p>Connecting diaspora talent with Ghana's development opportunities since 2025.</p>
         <div class="social-links">
-          <a href="https://linkedin.com/company/ddigghana" class="social-icon" aria-label="LinkedIn">in</a>
-          <a href="https://www.facebook.com/share/1BbgDoypPM/" class="social-icon" aria-label="Facebook">f</a>
-          <a href="https://twitter.com/ddigghana" class="social-icon" aria-label="Twitter">t</a>
-          <a href="https://instagram.com/ddigghana" class="social-icon" aria-label="Instagram">ig</a>
-        </div>
+       <div class="social-links">
+  <!-- LinkedIn -->
+  <a
+    href="https://linkedin.com/company/ddigghana"
+    class="social-icon linkedin"
+    aria-label="LinkedIn"
+    target="_blank"
+    rel="noopener"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4.98 3.5C3.88 3.5 3 4.38 3 5.48s.88 1.98 1.98 1.98a1.98 1.98 0 100-3.96zM3.5 8.75h2.96V21H3.5zM9.25 8.75h2.84v1.67h.04c.4-.76 1.38-1.56 2.85-1.56 3.05 0 3.61 2 3.61 4.6V21h-2.96v-6.54c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V21H9.25z"/>
+    </svg>
+  </a>
+
+  <!-- Facebook -->
+  <a
+    href="https://www.facebook.com/share/1BbgDoypPM/"
+    class="social-icon facebook"
+    aria-label="Facebook"
+    target="_blank"
+    rel="noopener"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M22.68 0H1.32A1.32 1.32 0 000 1.32v21.36A1.32 1.32 0 001.32 24h11.5v-9.3H9.69V11h3.13V8.41c0-3.1 1.9-4.79 4.66-4.79 1.32 0 2.45.1 2.78.14v3.23h-1.91c-1.5 0-1.79.71-1.79 1.76V11h3.58l-.47 3.7h-3.1V24h6.08A1.32 1.32 0 0024 22.68V1.32A1.32 1.32 0 0022.68 0z"/>
+    </svg>
+  </a>
+
+  <!-- Twitter / X -->
+  <a
+    href="https://twitter.com/ddigghana"
+    class="social-icon twitter"
+    aria-label="X"
+    target="_blank"
+    rel="noopener"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M18.3 2H21l-5.9 6.74L22 22h-5.4l-4.3-6.3L6.9 22H4l6.3-7.2L2 2h5.5l3.9 5.7z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a
+    href="https://instagram.com/ddigghana"
+    class="social-icon instagram"
+    aria-label="Instagram"
+    target="_blank"
+    rel="noopener"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.9.26 2.35.43a4.7 4.7 0 011.7 1.1 4.7 4.7 0 011.1 1.7c.17.45.37 1.15.43 2.35.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.26 1.9-.43 2.35a4.7 4.7 0 01-1.1 1.7 4.7 4.7 0 01-1.7 1.1c-.45.17-1.15.37-2.35.43-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.9-.26-2.35-.43a4.7 4.7 0 01-1.7-1.1 4.7 4.7 0 01-1.1-1.7c-.17-.45-.37-1.15-.43-2.35C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.26-1.9.43-2.35a4.7 4.7 0 011.1-1.7 4.7 4.7 0 011.7-1.1c.45-.17 1.15-.37 2.35-.43C8.4 2.2 8.8 2.2 12 2.2zm0 3.3a6.5 6.5 0 100 13 6.5 6.5 0 000-13zm0 10.7a4.2 4.2 0 110-8.4 4.2 4.2 0 010 8.4zm6.7-10.9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+    </svg>
+  </a>
+</div>
       </div>
 
       <div class="footer-section">
@@ -1582,6 +2097,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About DDIG</a></li>
           <li><a href="talent-pool.html">Talent Pool</a></li>
+          <li><a href="news_section.html">News Section</a></li>
           <li><a href="projects.html">Development Projects</a></li>
         </ul>
       </div>
@@ -1771,7 +2287,111 @@
         }
       });
     });
+
+    // ================= SUPPORT MODAL FUNCTIONALITY =================
+    const supportModal = document.getElementById('supportModal');
+    const openSupportBtn = document.getElementById('openSupport');
+    const closeSupportBtn = document.getElementById('closeSupport');
+    const copyButtons = document.querySelectorAll('.copy-btn');
+
+    // Open Support Modal
+    openSupportBtn.addEventListener('click', () => {
+      supportModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Close Support Modal
+    closeSupportBtn.addEventListener('click', () => {
+      supportModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // Close modal when clicking outside
+    supportModal.addEventListener('click', (e) => {
+      if (e.target === supportModal) {
+        supportModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && supportModal.classList.contains('active')) {
+        supportModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Copy to clipboard functionality
+    copyButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const textToCopy = button.getAttribute('data-copy');
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          // Visual feedback
+          const originalText = button.textContent;
+          button.textContent = '✓ Copied!';
+          button.classList.add('copied');
+          
+          // Reset button after 2 seconds
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+          }, 2000);
+          
+          // Show notification
+          if (copyNotification) {
+            copyNotification.textContent = '📋 Copied to clipboard!';
+            copyNotification.classList.add('show');
+            
+            setTimeout(() => {
+              copyNotification.classList.remove('show');
+            }, 3000);
+          }
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          button.textContent = 'Failed to copy';
+          button.style.background = '#ff4444';
+          
+          setTimeout(() => {
+            button.textContent = 'Copy';
+            button.style.background = '';
+          }, 2000);
+        });
+      });
+    });
+
+    // Add animation to support button
+    const supportBtn = document.querySelector('.support-btn');
+    supportBtn.addEventListener('mouseenter', () => {
+      supportBtn.style.transform = 'translateY(-5px) scale(1.05)';
+    });
+
+    supportBtn.addEventListener('mouseleave', () => {
+      supportBtn.style.transform = 'translateY(0) scale(1)';
+    });
+
+    // Make support button more visible with scroll animation
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const supportObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Apply observer to support button container
+    const supportContainer = document.querySelector('.support-button-container');
+    supportContainer.style.opacity = '0';
+    supportContainer.style.transform = 'translateY(30px)';
+    supportContainer.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    supportObserver.observe(supportContainer);
   </script>
 </body>
-
 </html>

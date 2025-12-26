@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DDIG Events Calendar | Diaspora Development Initiative Ghana</title>
+  <meta name="description" content="Upcoming diaspora events, workshops, conferences, and networking opportunities. Join virtual and in-person events for Ghanaian/African professionals worldwide.">
+  <meta name="keywords" content="Ghana diaspora events, African diaspora calendar, diaspora networking, Ghana events, virtual conferences, diaspora workshops">
+  <meta name="author" content="Diaspora Development Initiative Ghana">
+  
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    img-src 'self' data: https:;
+    connect-src 'self';
+    frame-ancestors 'none';
+">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #006b3f;
+      --secondary: #fcd116;
+      --accent: #ce1126;
+      --dark: #111111;
+      --light: #f8f9fa;
+      --gray: #666666;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+      --radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--light);
+    }
+
+    main {
+      flex: 1;
+      padding-top: 90px;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 107, 63, 0.1);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .nav-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .logo-text span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10001;
+    }
+
+    .hamburger {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: var(--primary);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 3px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .hamburger::before { top: -8px; }
+    .hamburger::after { bottom: -8px; }
+
+    .menu-toggle.active .hamburger { background: transparent; }
+    .menu-toggle.active .hamburger::before { top: 0; transform: rotate(45deg); }
+    .menu-toggle.active .hamburger::after { bottom: 0; transform: rotate(-45deg); }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--dark);
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover { color: var(--primary); }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after { width: 100%; }
+
+    .join-btn {
+      background: linear-gradient(135deg, var(--primary), #008751);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 107, 63, 0.2);
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .join-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 107, 63, 0.3);
+      background: linear-gradient(135deg, #008751, var(--primary));
+    }
+
+    .events-hero {
+      background: linear-gradient(135deg, #0a2e1d 0%, var(--primary) 100%);
+      color: white;
+      padding: 120px 40px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .events-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M50,0 Q75,25 100,50 Q75,75 50,100 Q25,75 0,50 Q25,25 50,0 Z" fill="white"/></svg>') repeat;
+      animation: float 30s linear infinite;
+    }
+
+    @keyframes float {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
+    }
+
+    .events-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .events-hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+      line-height: 1.6;
+    }
+
+    .event-types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .event-type-btn {
+      padding: 12px 25px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .event-type-btn:hover,
+    .event-type-btn.active {
+      background: var(--secondary);
+      color: var(--dark);
+      border-color: var(--secondary);
+    }
+
+    .events-section {
+      padding: 80px 40px;
+      background: var(--light);
+    }
+
+    .events-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .events-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+    }
+
+    .calendar-sidebar {
+      background: white;
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 110px;
+      height: fit-content;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .calendar-header h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .calendar-nav button {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .calendar-nav button:hover {
+      background: rgba(0, 107, 63, 0.1);
+    }
+
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .weekday {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-weight: 600;
+      padding: 8px 0;
+    }
+
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+    }
+
+    .calendar-day {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .calendar-day:hover {
+      background: rgba(0, 107, 63, 0.1);
+    }
+
+    .calendar-day.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .calendar-day.has-event {
+      position: relative;
+    }
+
+    .calendar-day.has-event::after {
+      content: '';
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .calendar-day.other-month {
+      color: #ccc;
+    }
+
+    .upcoming-list {
+      margin-top: 30px;
+    }
+
+    .upcoming-list h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .upcoming-event {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .upcoming-event:last-child {
+      border-bottom: none;
+    }
+
+    .upcoming-date {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .upcoming-title {
+      font-size: 0.9rem;
+      color: var(--dark);
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .event-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .event-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .event-badge.virtual {
+      background: #e3f2fd;
+      color: #1565c0;
+    }
+
+    .event-badge.in-person {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .event-badge.hybrid {
+      background: #fff3e0;
+      color: #ef6c00;
+    }
+
+    .event-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      position: relative;
+    }
+
+    .event-date {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 8px 15px;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .event-content {
+      padding: 25px;
+    }
+
+    .event-category {
+      display: inline-block;
+      background: rgba(0, 107, 63, 0.1);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .event-card h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .event-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 15px 0;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .event-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .event-excerpt {
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .event-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-register {
+      flex: 1;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn-register:hover {
+      background: #008751;
+      transform: translateY(-2px);
+    }
+
+    .btn-details {
+      flex: 1;
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 12px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn-details:hover {
+      background: rgba(0, 107, 63, 0.1);
+    }
+
+    .registration-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .registration-modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--gray);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: var(--accent);
+    }
+
+    .modal-content h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .registration-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-checkbox input {
+      width: 18px;
+      height: 18px;
+    }
+
+    .form-checkbox label {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+      background: #008751;
+    }
+
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 80px 40px 40px;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary), var(--primary));
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin-bottom: 60px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .footer-logo img {
+      height: 50px;
+    }
+
+    .footer-logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+    }
+
+    .footer-logo-text span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #ccc;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      color: var(--secondary);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .contact-info {
+      color: #ccc;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 15px;
+    }
+
+    .contact-info a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact-info a:hover {
+      color: var(--secondary);
+    }
+
+    .whatsapp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #020d06;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-badge:hover {
+      transform: scale(1.05);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .social-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .social-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #ffffff;
+    }
+
+    .linkedin { background: #0a66c2; }
+    .facebook { background: #1877f2; }
+    .twitter { background: #000000; }
+    .instagram {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+    }
+
+    .social-icon:hover {
+      transform: scale(1.08);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #999;
+      font-size: 0.9rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1200px) {
+      .events-layout {
+        grid-template-columns: 250px 1fr;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .events-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .calendar-sidebar {
+        position: static;
+      }
+      
+      .events-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-wrapper {
+        padding: 15px 20px;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        padding: 100px 30px 30px;
+        transition: right 0.4s ease;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+        z-index: 10000;
+      }
+      
+      .nav ul.active {
+        right: 0;
+      }
+      
+      .nav li {
+        width: 100%;
+      }
+      
+      .nav a {
+        display: block;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 1.1rem;
+      }
+      
+      .events-hero {
+        padding: 100px 20px 60px;
+      }
+      
+      .events-hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .events-hero p {
+        font-size: 1.1rem;
+      }
+      
+      .events-section {
+        padding: 60px 20px;
+      }
+      
+      .event-actions {
+        flex-direction: column;
+      }
+      
+      .footer {
+        padding: 60px 20px 30px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 1.1rem;
+      }
+      
+      .events-hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+
+  <header class="header" role="banner">
+    <div class="nav-wrapper">
+      <div class="logo-container">
+        <a href="index.html" aria-label="DDIG Home">
+          <img src="images\DDIG_Logo.png" alt="DDIG Logo" class="logo" width="150" height="50">
+        </a>
+        <div class="logo-text">
+          Diaspora Development Initiative Ghana
+          <span>Connecting Talent • Driving Development</span>
+        </div>
+      </div>
+
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <ul id="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="talent-pool.html">Talent Pool</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="news.html">News Section</a></li>
+          <li><a class="active" href="events.html" aria-current="page">Events Calendar</a></li>
+          <li><a href="contact.html" class="join-btn">Join Community</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" role="main">
+    <section class="events-hero" aria-labelledby="events-heading">
+      <h1 id="events-heading">DDIG Events Calendar</h1>
+      <p>Join diaspora professionals worldwide for networking, workshops, conferences, and development initiatives.</p>
+      
+      
+    </section>
+
+    <section class="events-section" aria-label="Events calendar and listings">
+      <div class="events-container">
+        <div class="events-layout">
+          <aside class="calendar-sidebar" aria-label="Calendar and upcoming events">
+            <div class="calendar-header">
+              <h3><i class="far fa-calendar"></i> March 2025</h3>
+              <div class="calendar-nav">
+                <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+              </div>
+            </div>
+            
+            <div class="calendar-weekdays">
+              <div class="weekday">Sun</div>
+              <div class="weekday">Mon</div>
+              <div class="weekday">Tue</div>
+              <div class="weekday">Wed</div>
+              <div class="weekday">Thu</div>
+              <div class="weekday">Fri</div>
+              <div class="weekday">Sat</div>
+            </div>
+            
+            <div class="calendar-days" id="calendar-days">
+              <!-- Calendar days will be generated by JavaScript -->
+            </div>
+            
+            <div class="upcoming-list">
+              <h4><i class="fas fa-clock"></i> Today's Events</h4>
+              <div class="upcoming-event">
+                <div class="upcoming-date">Mar 25 • 6:00 PM GMT</div>
+                <div class="upcoming-title">Virtual Networking: FinTech Professionals</div>
+              </div>
+              <div class="upcoming-event">
+                <div class="upcoming-date">Mar 25 • 2:00 PM EST</div>
+                <div class="upcoming-title">Diaspora Investment Q&A Session</div>
+              </div>
+              
+              <h4 style="margin-top: 25px;"><i class="fas fa-star"></i> Featured Event</h4>
+              <div class="upcoming-event">
+                <div class="upcoming-date">Aug 15-17, 2025</div>
+                <div class="upcoming-title">Annual Diaspora Homecoming Conference</div>
+              </div>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 15px; background: rgba(0, 107, 63, 0.05); border-radius: var(--radius);">
+              <p style="font-size: 0.9rem; color: var(--primary);">
+                <i class="fas fa-info-circle"></i> <strong>Time Zone Note:</strong><br>
+                All times shown in GMT. Convert to your local time.
+              </p>
+            </div>
+          </aside>
+
+          <div class="events-main">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+              <h2 style="color: var(--primary); font-size: 1.8rem;">Upcoming Events</h2>
+              <div style="display: flex; gap: 10px;">
+                <button class="event-type-btn" style="padding: 8px 15px; font-size: 0.9rem;">
+                  <i class="fas fa-download"></i> Export Calendar
+                </button>
+               <!-- <button class="event-type-btn active" style="padding: 8px 15px; font-size: 0.9rem;">
+                  <i class="fas fa-bell"></i> Set Reminders
+                </button> -->
+              </div>
+            </div>
+            
+            <div class="events-grid">
+              <!-- Event 1 -->
+              <div class="event-card">
+                <span class="event-badge virtual">Virtual</span>
+                <div class="event-image">
+                  <i class="fas fa-chart-line"></i>
+                  <div class="event-date">Mar 25, 2025</div>
+                </div>
+                <div class="event-content">
+                  <span class="event-category">Finance & Investment</span>
+                  <h3>Virtual Networking: FinTech Diaspora Professionals</h3>
+                  <div class="event-meta">
+                    <span><i class="far fa-clock"></i> 6:00 PM - 8:00 PM GMT</span>
+                    <span><i class="fas fa-video"></i> Zoom Meeting</span>
+                  </div>
+                  <p class="event-excerpt">
+                    Connect with FinTech professionals across the diaspora. Discuss trends, opportunities, and collaboration in Ghana's growing financial technology sector.
+                  </p>
+                  <div class="event-actions">
+                    <!--<button class="btn-register register-btn" data-event="Virtual Networking: FinTech Diaspora Professionals">
+                      Register Now
+                    </button> 
+                    <a href="#event-details" class="btn-details">
+                      Details
+                    </a> -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event 2 -->
+              <div class="event-card">
+                <span class="event-badge in-person">In-Person</span>
+                <div class="event-image">
+                  <i class="fas fa-handshake"></i>
+                  <div class="event-date">Mar 28-30, 2025</div>
+                </div>
+                <div class="event-content">
+                  <span class="event-category">Investment Summit</span>
+                  <h3>Diaspora Investment Summit Accra 2025</h3>
+                  <div class="event-meta">
+                    <span><i class="far fa-clock"></i> 9:00 AM Daily</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Kempinski Hotel, Accra</span>
+                  </div>
+                  <p class="event-excerpt">
+                    Join the premier investment gathering connecting diaspora investors with viable projects in Ghana. Featuring pitch sessions, networking, and site visits.
+                  </p>
+                  <div class="event-actions">
+                    <!--<button class="btn-register register-btn" data-event="Diaspora Investment Summit Accra 2025">
+                      Register Now
+                    </button> 
+                    <a href="#event-details" class="btn-details">
+                      Details
+                    </a>-->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event 3 -->
+              <div class="event-card">
+                <span class="event-badge virtual">Virtual</span>
+                <div class="event-image">
+                  <i class="fas fa-rocket"></i>
+                  <div class="event-date">Apr 5, 2025</div>
+                </div>
+                <div class="event-content">
+                  <span class="event-category">Entrepreneurship</span>
+                  <h3>Webinar: Navigating Ghana's Startup Ecosystem</h3>
+                  <div class="event-meta">
+                    <span><i class="far fa-clock"></i> 4:00 PM - 6:00 PM GMT</span>
+                    <span><i class="fas fa-video"></i> Online Webinar</span>
+                  </div>
+                  <p class="event-excerpt">
+                    Learn from successful diaspora entrepreneurs about starting and scaling businesses in Ghana. Covers regulations, funding, and market entry strategies.
+                  </p>
+                  <div class="event-actions">
+                    <!--<button class="btn-register register-btn" data-event="Webinar: Navigating Ghana's Startup Ecosystem">
+                      Register Now
+                    </button> 
+                    <a href="#event-details" class="btn-details">
+                      Details
+                    </a>-->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event 4 -->
+              <div class="event-card">
+                <span class="event-badge in-person">In-Person</span>
+                <div class="event-image">
+                  <i class="fas fa-stethoscope"></i>
+                  <div class="event-date">Apr 12, 2025</div>
+                </div>
+                <div class="event-content">
+                  <span class="event-category">Healthcare</span>
+                  <h3>Diaspora Health Professionals Workshop</h3>
+                  <div class="event-meta">
+                    <span><i class="far fa-clock"></i> 10:00 AM - 4:00 PM GMT</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Korle Bu Teaching Hospital</span>
+                  </div>
+                  <p class="event-excerpt">
+                    Join healthcare professionals for a day of knowledge sharing, skills transfer, and collaboration opportunities in Ghana's healthcare sector.
+                  </p>
+                  <div class="event-actions">
+                    <!-- <button class="btn-register register-btn" data-event="Diaspora Health Professionals Workshop">
+                      Register Now
+                    </button> 
+                    <a href="#event-details" class="btn-details">
+                      Details
+                    </a>-->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event 5 -->
+              <div class="event-card">
+                <span class="event-badge hybrid">Hybrid</span>
+                <div class="event-image">
+                  <i class="fas fa-leaf"></i>
+                  <div class="event-date">Apr 20, 2025</div>
+                </div>
+                <div class="event-content">
+                  <span class="event-category">Environment</span>
+                  <h3>Climate Action: Diaspora Role in Green Ghana</h3>
+                  <div class="event-meta">
+                    <span><i class="far fa-clock"></i> 3:00 PM - 5:00 PM GMT</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Hybrid: Accra & Online</span>
+                  </div>
+                  <p class="event-excerpt">
+                    Explore how diaspora professionals can contribute to Ghana's climate resilience and green initiatives. Featuring environmental experts and project leaders.
+                  </p>
+                  <div class="event-actions">
+                  <!--
+                    <a href="#event-details" class="btn-details">
+                      Details
+                    </a> -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event 6 -->
+              <div class="event-card">
+                <span class="event-badge in-person">In-Person</span>
+                <div class="event-image">
+                  <i class="fas fa-graduation-cap"></i>
+                  <div class="event-date">Aug 15-17, 2025</div>
+                </div>
+                <div class="event-content">
+                  <span class="event-category">Conference</span>
+                  <h3>Annual Diaspora Homecoming Conference 2025</h3>
+                  <div class="event-meta">
+                    <span><i class="far fa-clock"></i> 3 Days</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Accra International Conference Centre</span>
+                  </div>
+                  <p class="event-excerpt">
+                    The largest gathering of Ghanaian diaspora professionals. Theme: "Building Bridges for Sustainable Development." Featuring 50+ speakers, workshops, and networking.
+                  </p>
+                  <div class="event-actions">
+                    <!--<button class="btn-register register-btn" data-event="Annual Diaspora Homecoming Conference 2025">
+                      Early Bird Registration
+                    </button> 
+                    <a href="#event-details" class="btn-details">
+                      Agenda
+                    </a>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+           <!--<div style="text-align: center; margin-top: 50px;">
+              <button class="join-btn" style="padding: 15px 40px; font-size: 1.1rem;">
+                <i class="fas fa-calendar-plus"></i> View All Past Events
+              </button>
+            </div> --> 
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Registration Modal 
+  <div class="registration-modal" id="registrationModal">
+    <div class="modal-content">
+      <button class="close-modal" id="closeModal">&times;</button>
+      <h3 id="modalTitle">Event Registration</h3>
+      <form id="registrationForm" class="registration-form">
+          <!-- Hidden fields for backend processing 
+          <input type="hidden" name="action" value="register_event">
+          <input type="hidden" name="eventName" id="eventNameField" value="">
+          
+          <!-- Honeypot field for spam prevention 
+          <input type="text" name="website" style="display:none;">
+          
+          <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" name="fullName" required>
+          </div>
+          
+          <div class="form-row">
+              <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone">
+              </div>
+          </div>
+          
+          <div class="form-group">
+              <label for="location">Current Location *</label>
+              <input type="text" id="location" name="location" placeholder="City, Country" required>
+          </div>
+          
+          <div class="form-group">
+              <label for="profession">Profession/Industry *</label>
+              <select id="profession" name="profession" required>
+                  <option value="">Select your profession</option>
+                  <option value="tech">Technology</option>
+                  <option value="finance">Finance/Banking</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="education">Education</option>
+                  <option value="engineering">Engineering</option>
+                  <option value="environment">Environment/Energy</option>
+                  <option value="business">Business/Entrepreneurship</option>
+                  <option value="other">Other</option>
+              </select>
+          </div>
+          
+          <div class="form-group">
+              <label for="diasporaStatus">Diaspora Status *</label>
+              <select id="diasporaStatus" name="diasporaStatus" required>
+                  <option value="">Select your status</option>
+                  <option value="ghanaian_diaspora">Ghanaian Living Abroad</option>
+                  <option value="african_diaspora">African Diaspora</option>
+                  <option value="ghana_based">Based in Ghana</option>
+                  <option value="other">Other</option>
+              </select>
+          </div>
+          
+          <div class="form-group">
+              <label for="attendeeType">Attendee Type *</label>
+              <select id="attendeeType" name="attendeeType" required>
+                  <option value="">Select type</option>
+                  <option value="virtual">Virtual Attendee</option>
+                  <option value="in_person">In-Person Attendee</option>
+              </select>
+          </div>
+          
+          <div class="form-group">
+              <label for="additionalInfo">Additional Information</label>
+              <input type="text" id="additionalInfo" name="additionalInfo" 
+                     placeholder="Dietary requirements, accessibility needs, etc.">
+          </div>
+          
+          <div class="form-checkbox">
+              <input type="checkbox" id="newsletter" name="newsletter" value="1">
+              <label for="newsletter">Subscribe to DDIG newsletter for event updates</label>
+          </div>
+          
+          <div class="form-checkbox">
+              <input type="checkbox" id="terms" name="terms" required>
+              <label for="terms">I agree to the terms and conditions *</label>
+          </div>
+          
+          <button type="submit" class="btn-submit">
+              <i class="fas fa-paper-plane"></i> Submit Registration
+          </button>
+      </form> -->
+    </div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="images\DDIG_Logo.png" alt="DDIG Logo">
+          <div class="footer-logo-text">
+            DDIG Ghana
+            <span>Diaspora Development Initiative</span>
+          </div>
+        </div>
+        <p>Connecting diaspora talent with Ghana's development opportunities since 2025.</p>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/ddigghana" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.98 3.5C3.88 3.5 3 4.38 3 5.48s.88 1.98 1.98 1.98a1.98 1.98 0 100-3.96zM3.5 8.75h2.96V21H3.5zM9.25 8.75h2.84v1.67h.04c.4-.76 1.38-1.56 2.85-1.56 3.05 0 3.61 2 3.61 4.6V21h-2.96v-6.54c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V21H9.25z"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/share/1BbgDoypPM/" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.68 0H1.32A1.32 1.32 0 000 1.32v21.36A1.32 1.32 0 001.32 24h11.5v-9.3H9.69V11h3.13V8.41c0-3.1 1.9-4.79 4.66-4.79 1.32 0 2.45.1 2.78.14v3.23h-1.91c-1.5 0-1.79.71-1.79 1.76V11h3.58l-.47 3.7h-3.1V24h6.08A1.32 1.32 0 0024 22.68V1.32A1.32 1.32 0 0022.68 0z"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com/ddigghana" class="social-icon twitter" aria-label="X" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.3 2H21l-5.9 6.74L22 22h-5.4l-4.3-6.3L6.9 22H4l6.3-7.2L2 2h5.5l3.9 5.7z"/>
+            </svg>
+          </a>
+          <a href="https://instagram.com/ddigghana" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.9.26 2.35.43a4.7 4.7 0 011.7 1.1 4.7 4.7 0 011.1 1.7c.17.45.37 1.15.43 2.35.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.26 1.9-.43 2.35a4.7 4.7 0 01-1.1 1.7 4.7 4.7 0 01-1.7 1.1c-.45.17-1.15.37-2.35.43-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.9-.26-2.35-.43a4.7 4.7 0 01-1.7-1.1 4.7 4.7 0 01-1.1-1.7c-.17-.45-.37-1.15-.43-2.35C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.26-1.9.43-2.35a4.7 4.7 0 011.1-1.7 4.7 4.7 0 011.7-1.1c.45-.17 1.15-.37 2.35-.43C8.4 2.2 8.8 2.2 12 2.2zm0 3.3a6.5 6.5 0 100 13 6.5 6.5 0 000-13zm0 10.7a4.2 4.2 0 110-8.4 4.2 4.2 0 010 8.4zm6.7-10.9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About DDIG</a></li>
+          <li><a href="talent-pool.html">Talent Pool</a></li>
+          <li><a href="projects.html">Development Projects</a></li>
+          <li><a href="news.html">News Section</a></li>
+          <li><a href="events.html">Events Calendar</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact & Connect</h3>
+        <div class="contact-info">
+          <p><strong>Events Email:</strong></p>
+          <a href="mailto:events@ddig-group.com">events@ddig-group.com</a>
+          
+          <p><strong>Ghana Contacts:</strong></p>
+          <a href="tel:+233243545222">🇬🇭 +233 24 354 5222</a>
+          <a href="https://wa.me/233540464857" class="whatsapp-badge" target="_blank">
+            💬 WhatsApp: +233 54 046 4857
+          </a>
+          
+          <p><strong>Event Support:</strong></p>
+          <a href="tel:+31614650231">🌍 +31 6 1465 0231</a>
+          
+          <p style="margin-top: 15px; font-size: 0.9rem;">
+            <i class="fas fa-clock"></i> Event inquiries: Mon-Fri, 9am-5pm GMT
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="current-year">2025</span> Diaspora Development Initiative Ghana. All rights reserved.</p>
+      <p style="margin-top: 10px; font-size: 0.85rem;">Developed by JayTech - Solutions</p>
+    </div>
+  </footer>
+
+  <script>
+    // Remove no-js class
+    document.documentElement.classList.remove('no-js');
+    
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('#main-nav');
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      });
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && 
+          !e.target.closest('.nav') && 
+          !e.target.closest('.menu-toggle') && 
+          navMenu.classList.contains('active')) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Update current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Event type filtering
+    const eventTypeBtns = document.querySelectorAll('.event-type-btn');
+    eventTypeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        eventTypeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.textContent.trim().toLowerCase();
+        const eventCards = document.querySelectorAll('.event-card');
+        
+        eventCards.forEach(card => {
+          if (filter === 'all events' || filter === 'all') {
+            card.style.display = 'block';
+          } else if (filter === 'virtual') {
+            const isVirtual = card.querySelector('.event-badge.virtual');
+            card.style.display = isVirtual ? 'block' : 'none';
+          } else if (filter === 'in-person') {
+            const isInPerson = card.querySelector('.event-badge.in-person');
+            card.style.display = isInPerson ? 'block' : 'none';
+          } else if (filter === 'hybrid') {
+            const isHybrid = card.querySelector('.event-badge.hybrid');
+            card.style.display = isHybrid ? 'block' : 'none';
+          } else {
+            // Filter by category
+            const category = card.querySelector('.event-category').textContent.toLowerCase();
+            card.style.display = category.includes(filter) ? 'block' : 'none';
+          }
+        });
+      });
+    });
+    
+    // Calendar functionality
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+    
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+    
+    const calendarDays = document.getElementById('calendar-days');
+    const prevMonthBtn = document.getElementById('prev-month');
+    const nextMonthBtn = document.getElementById('next-month');
+    
+    function generateCalendar(month, year) {
+      // Update calendar header
+      document.querySelector('.calendar-header h3').innerHTML = 
+        `<i class="far fa-calendar"></i> ${monthNames[month]} ${year}`;
+      
+      // Clear previous calendar days
+      calendarDays.innerHTML = '';
+      
+      // Get first day of month
+      const firstDay = new Date(year, month, 1).getDay();
+      // Get last day of month
+      const lastDay = new Date(year, month + 1, 0).getDate();
+      // Get last day of previous month
+      const prevLastDay = new Date(year, month, 0).getDate();
+      
+      // Days with events (hardcoded for demo)
+      const eventDays = [5, 12, 19, 25, 26, 28];
+      
+      // Previous month days
+      for (let i = firstDay; i > 0; i--) {
+        const day = document.createElement('div');
+        day.className = 'calendar-day other-month';
+        day.textContent = prevLastDay - i + 1;
+        calendarDays.appendChild(day);
+      }
+      
+      // Current month days
+      for (let i = 1; i <= lastDay; i++) {
+        const day = document.createElement('div');
+        day.className = 'calendar-day';
+        day.textContent = i;
+        
+        // Highlight today
+        const today = new Date();
+        if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+          day.classList.add('active');
+        }
+        
+        // Mark days with events
+        if (eventDays.includes(i)) {
+          day.classList.add('has-event');
+        }
+        
+        // Add click event
+        day.addEventListener('click', () => {
+          document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('active'));
+          day.classList.add('active');
+          console.log(`Selected date: ${year}-${month + 1}-${i}`);
+        });
+        
+        calendarDays.appendChild(day);
+      }
+      
+      // Next month days
+      const totalCells = 42; // 6 weeks * 7 days
+      const nextDays = totalCells - (firstDay + lastDay);
+      for (let i = 1; i <= nextDays; i++) {
+        const day = document.createElement('div');
+        day.className = 'calendar-day other-month';
+        day.textContent = i;
+        calendarDays.appendChild(day);
+      }
+    }
+    
+    // Initialize calendar
+    generateCalendar(currentMonth, currentYear);
+    
+    // Previous month button
+    prevMonthBtn.addEventListener('click', () => {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      generateCalendar(currentMonth, currentYear);
+    });
+    
+    // Next month button
+    nextMonthBtn.addEventListener('click', () => {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      generateCalendar(currentMonth, currentYear);
+    });
+    
+    // Registration Modal
+    const registrationModal = document.getElementById('registrationModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const registerBtns = document.querySelectorAll('.register-btn');
+    const modalTitle = document.getElementById('modalTitle');
+    const registrationForm = document.getElementById('registrationForm');
+    
+    // Open modal when register button is clicked
+    registerBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const eventName = btn.getAttribute('data-event');
+        modalTitle.textContent = `Register for: ${eventName}`;
+        
+        // Set the event name in hidden field
+        document.getElementById('eventNameField').value = eventName;
+        
+        registrationModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    
+    // Close modal
+    closeModalBtn.addEventListener('click', () => {
+      registrationModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    // Close modal when clicking outside
+    registrationModal.addEventListener('click', (e) => {
+      if (e.target === registrationModal) {
+        registrationModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Form submission
+    registrationForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(registrationForm);
+      
+      // Show loading state
+      const submitBtn = registrationForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+      submitBtn.disabled = true;
+      
+      // Submit to PHP backend
+    // Form submission
+registrationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(registrationForm);
+    
+    // Show loading state
+    const submitBtn = registrationForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+    submitBtn.disabled = true;
+    
+    // Submit to PHP file
+    fetch('submit.php', {  // CHANGED: Now using submit.php in same folder
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data);
+        if (data.success) {
+            // Show success message with registration ID
+            let successMsg = '✅ ' + data.message;
+            if (data.data && data.data.registration_id) {
+                successMsg += '\nRegistration ID: ' + data.data.registration_id;
+            }
+            alert(successMsg);
+            
+            // Close modal
+            registrationModal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Reset form
+            registrationForm.reset();
+        } else {
+            alert('❌ ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        
+        // Fallback: Show email option
+        const eventName = document.getElementById('eventNameField').value;
+        const formDataObj = Object.fromEntries(formData);
+        const emailBody = 
+`DDIG Event Registration
+
+Event: ${eventName}
+Name: ${formDataObj.fullName || ''}
+Email: ${formDataObj.email || ''}
+Phone: ${formDataObj.phone || ''}
+Location: ${formDataObj.location || ''}
+Profession: ${formDataObj.profession || ''}
+
+Please register me for this event.`;
+
+        const emailSubject = `Event Registration: ${eventName}`;
+        const mailtoLink = `mailto:events@ddig-group.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+        
+        alert('⚠️ Form submission failed.\n\nPlease:\n1. Try again in a few minutes\n2. Or email us directly at: events@ddig-group.com\n\nClick OK to open email client.');
+        window.location.href = mailtoLink;
+    })
+    .finally(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+});
+    });
+    
+    // Animate event cards on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all event cards
+    document.querySelectorAll('.event-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
+    });
+    
+    // Export calendar functionality (placeholder)
+    const exportBtn = document.querySelector('.event-type-btn:nth-child(1)');
+    exportBtn.addEventListener('click', () => {
+      alert('Calendar exported! You will receive an .ics file via email.');
+    });
+    
+    // Set reminders functionality (placeholder)
+    const reminderBtn = document.querySelector('.event-type-btn:nth-child(2)');
+    reminderBtn.addEventListener('click', () => {
+      alert('Reminders enabled! You will receive notifications for upcoming events.');
+    });
+  </script>
+</body>
+</html>

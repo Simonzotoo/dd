@@ -673,7 +673,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #25D366;
+      background: #030c06;
       color: white;
       padding: 8px 15px;
       border-radius: 20px;
@@ -879,6 +879,55 @@
     .success-message.show {
       display: block;
     }
+
+    .social-links {
+  display: flex;
+  gap: 14px;
+}
+
+.social-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #ffffff;
+}
+
+/* Brand backgrounds */
+.linkedin {
+  background: #0a66c2;
+}
+
+.facebook {
+  background: #1877f2;
+}
+
+.twitter {
+  background: #000000; /* X is black */
+}
+
+.instagram {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+}
+
+/* Subtle hover */
+.social-icon:hover {
+  transform: scale(1.08);
+}
   </style>
 </head>
 <body>
@@ -908,6 +957,7 @@
           <li><a href="about.html">About</a></li>
           <li><a class="active" href="talent-pool.html" aria-current="page">Talent Pool</a></li>
           <li><a href="projects.html">Projects</a></li>
+          <li><a href="news_section.html">News Section</a></li>
           <li><a href="contact.html" class="join-btn">Join Community</a></li>
         </ul>
       </nav>
@@ -1041,12 +1091,59 @@
           </div>
         </div>
         <p>Connecting diaspora talent with Ghana's development opportunities since 2025.</p>
-        <div class="social-links">
-          <a href="https://linkedin.com/company/ddigghana" class="social-icon" aria-label="LinkedIn">in</a>
-          <a href="https://facebook.com/ddigghana" class="social-icon" aria-label="Facebook">f</a>
-          <a href="https://twitter.com/ddigghana" class="social-icon" aria-label="Twitter">t</a>
-          <a href="https://instagram.com/ddigghana" class="social-icon" aria-label="Instagram">ig</a>
-        </div>
+      <div class="social-links">
+  <!-- LinkedIn -->
+  <a
+    href="https://linkedin.com/company/ddigghana"
+    class="social-icon linkedin"
+    aria-label="LinkedIn"
+    target="_blank"
+    rel="noopener"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4.98 3.5C3.88 3.5 3 4.38 3 5.48s.88 1.98 1.98 1.98a1.98 1.98 0 100-3.96zM3.5 8.75h2.96V21H3.5zM9.25 8.75h2.84v1.67h.04c.4-.76 1.38-1.56 2.85-1.56 3.05 0 3.61 2 3.61 4.6V21h-2.96v-6.54c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V21H9.25z"/>
+    </svg>
+  </a>
+
+  <!-- Facebook -->
+  <a
+    href="https://www.facebook.com/share/1BbgDoypPM/"
+    class="social-icon facebook"
+    aria-label="Facebook"
+    target="_blank"
+    rel="noopener"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M22.68 0H1.32A1.32 1.32 0 000 1.32v21.36A1.32 1.32 0 001.32 24h11.5v-9.3H9.69V11h3.13V8.41c0-3.1 1.9-4.79 4.66-4.79 1.32 0 2.45.1 2.78.14v3.23h-1.91c-1.5 0-1.79.71-1.79 1.76V11h3.58l-.47 3.7h-3.1V24h6.08A1.32 1.32 0 0024 22.68V1.32A1.32 1.32 0 0022.68 0z"/>
+    </svg>
+  </a>
+
+  <!-- Twitter / X -->
+  <a
+    href="https://twitter.com/ddigghana"
+    class="social-icon twitter"
+    aria-label="X"
+    target="_blank"
+    rel="noopener"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M18.3 2H21l-5.9 6.74L22 22h-5.4l-4.3-6.3L6.9 22H4l6.3-7.2L2 2h5.5l3.9 5.7z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a
+    href="https://instagram.com/ddigghana"
+    class="social-icon instagram"
+    aria-label="Instagram"
+    target="_blank"
+    rel="noopener"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.9.26 2.35.43a4.7 4.7 0 011.7 1.1 4.7 4.7 0 011.1 1.7c.17.45.37 1.15.43 2.35.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.26 1.9-.43 2.35a4.7 4.7 0 01-1.1 1.7 4.7 4.7 0 01-1.7 1.1c-.45.17-1.15.37-2.35.43-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.9-.26-2.35-.43a4.7 4.7 0 01-1.7-1.1 4.7 4.7 0 01-1.1-1.7c-.17-.45-.37-1.15-.43-2.35C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.26-1.9.43-2.35a4.7 4.7 0 011.1-1.7 4.7 4.7 0 011.7-1.1c.45-.17 1.15-.37 2.35-.43C8.4 2.2 8.8 2.2 12 2.2zm0 3.3a6.5 6.5 0 100 13 6.5 6.5 0 000-13zm0 10.7a4.2 4.2 0 110-8.4 4.2 4.2 0 010 8.4zm6.7-10.9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+    </svg>
+  </a>
+</div>
       </div>
 
       <div class="footer-section">
@@ -1056,6 +1153,7 @@
           <li><a href="about.html">About DDIG</a></li>
           <li><a href="talent-pool.html">Talent Pool</a></li>
           <li><a href="projects.html">Development Projects</a></li>
+ 
         </ul>
       </div>
 
@@ -1317,6 +1415,4 @@
     });
   </script>
 </body>
-
 </html>
-

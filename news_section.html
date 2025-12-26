@@ -18,6 +18,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
   
   <style>
     /* ================= DDIG NEW DESIGN ================= */
@@ -57,6 +61,7 @@
 
     main {
       flex: 1;
+      padding-top: 90px;
     }
 
     /* ================= MODERN HEADER ================= */
@@ -148,7 +153,7 @@
     .nav ul {
       list-style: none;
       display: flex;
-      gap: 35px;
+      gap: 30px;
       align-items: center;
     }
 
@@ -207,7 +212,6 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      margin-top: 90px;
       background: linear-gradient(135deg, #0a2e1d 0%, var(--primary) 100%);
     }
 
@@ -565,6 +569,184 @@
       color: var(--secondary);
     }
 
+    /* ================= NEWS & BLOG PREVIEW ================= */
+    .news-preview {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .news-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .news-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .news-content {
+      padding: 30px;
+    }
+
+    .news-category {
+      display: inline-block;
+      background: rgba(0, 107, 63, 0.1);
+      color: var(--primary);
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .news-card h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .news-date {
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .news-excerpt {
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: gap 0.3s ease;
+    }
+
+    .news-link:hover {
+      gap: 12px;
+    }
+
+    /* ================= EVENTS CALENDAR PREVIEW ================= */
+    .events-preview {
+      background: white;
+    }
+
+    .events-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .upcoming-events {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+
+    .upcoming-events h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .event-list {
+      list-style: none;
+    }
+
+    .event-item {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0, 107, 63, 0.1);
+    }
+
+    .event-item:last-child {
+      border-bottom: none;
+    }
+
+    .event-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: white;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .event-item h4 {
+      color: var(--dark);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .event-location {
+      color: var(--gray);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .calendar-placeholder {
+      background: linear-gradient(135deg, var(--primary), #0a2e1d);
+      border-radius: var(--radius);
+      padding: 40px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .calendar-placeholder h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .calendar-placeholder p {
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
     /* ================= FOOTER ================= */
     .footer {
       background: var(--dark);
@@ -749,6 +931,16 @@
       }
     }
 
+    @media (max-width: 992px) {
+      .nav ul {
+        gap: 25px;
+      }
+      
+      .events-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
       .nav-wrapper {
         padding: 15px 20px;
@@ -792,7 +984,6 @@
         height: auto;
         min-height: auto;
         padding: 120px 0 80px;
-        margin-top: 80px;
       }
       
       .hero h1 {
@@ -822,6 +1013,10 @@
         font-size: 2rem;
       }
       
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+      
       .footer {
         padding: 60px 20px 30px;
       }
@@ -848,6 +1043,11 @@
       
       .benefits-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .news-card {
+        margin: 0 -20px;
+        border-radius: 0;
       }
     }
 
@@ -899,6 +1099,19 @@
 .social-icon:hover {
   transform: scale(1.08);
 }
+
+    /* Accessibility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 </head>
 <body>
@@ -936,85 +1149,150 @@
   </header>
 
   <main id="main-content" role="main">
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-content">
-        <div class="hero-text">
-          <span class="hero-tag">Platform for Ghanaian/African Diaspora Professionals</span>
-          <h1 id="hero-heading">
-            Mobilizing <span class="highlight">Diaspora Talent</span> for Ghana's Development
-          </h1>
-          <p class="hero-subtitle">
-            DDIG connects Ghanaian/African professionals worldwide with opportunities to contribute 
-            their expertise in environment, energy, tech, finance, governance, and more to drive 
-            sustainable development in Ghana and Africa.
-          </p>
-          <div class="hero-cta">
-            <a href="contact.html" class="btn btn-primary">
-               Join Our Network
-            </a>
-            <a href="talent-pool.html" class="btn btn-secondary">
-               Share Your Expertise
-            </a>
-          </div>
-        </div>
-        
-        <div class="hero-visual">
-          <div class="globe-container">
-            <div class="globe">
-              <div class="connection-dots">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+ 
 
-    <!-- What We Do -->
-    <section class="section" aria-labelledby="what-we-do">
+    <!-- Latest News & Updates -->
+    <section class="section news-preview" aria-labelledby="latest-news">
       <div class="section-title">
-        <h2 id="what-we-do">What We Do</h2>
-        <p>Leveraging diaspora expertise for Ghana's sustainable development</p>
+        <h2 id="latest-news">Latest News & Updates</h2>
+        <p>Stay informed about diaspora activities, achievements, and Ghanaian community news</p>
       </div>
       
-      <div class="talent-grid">
-        <div class="talent-card">
-          <div class="talent-icon">💎</div>
-          <h3>Talent Mobilization</h3>
-          <p>Connect diaspora professionals in environment, energy, tech, sciences, finance, 
-          and governance with development projects in Ghana.</p>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-image">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div class="news-content">
+            <span class="news-category">Partnerships</span>
+            <h3>DDIG Partners with Ghana Tech University for Diaspora Mentorship Program</h3>
+            <div class="news-date">
+              <i class="far fa-calendar"></i> March 15, 2025
+            </div>
+            <p class="news-excerpt">
+              A new initiative connecting diaspora tech professionals with Ghanaian students for mentorship and career guidance.
+            </p>
+            <a href="news.html#blog1" class="news-link">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
         
-        <div class="talent-card">
-          <div class="talent-icon">🌐</div>
-          <h3>Global Networking</h3>
-          <p>Build bridges between Ghanaian/African professionals worldwide and local 
-          stakeholders for collaboration and knowledge exchange.</p>
+        <div class="news-card">
+          <div class="news-image">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="news-content">
+            <span class="news-category">Achievements</span>
+            <h3>Diaspora Professionals Contribute to 30% Growth in Renewable Energy Projects</h3>
+            <div class="news-date">
+              <i class="far fa-calendar"></i> March 10, 2025
+            </div>
+            <p class="news-excerpt">
+              How diaspora expertise is accelerating Ghana's transition to sustainable energy solutions.
+            </p>
+            <a href="news.html#blog2" class="news-link">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
         
-        <div class="talent-card">
-          <div class="talent-icon">🚀</div>
-          <h3>Project Development</h3>
-          <p>Support and coordinate initiatives that drive positive change across key 
-          sectors in Ghana and Africa.</p>
+        <div class="news-card">
+          <div class="news-image">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="news-content">
+            <span class="news-category">Community</span>
+            <h3>Annual Diaspora Homecoming Conference 2025: Building Bridges for Development</h3>
+            <div class="news-date">
+              <i class="far fa-calendar"></i> March 5, 2025
+            </div>
+            <p class="news-excerpt">
+              Join us for the largest gathering of Ghanaian diaspora professionals focused on national development.
+            </p>
+            <a href="news.html#blog3" class="news-link">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
-        
-        <div class="talent-card">
-          <div class="talent-icon">📚</div>
-          <h3>Knowledge Sharing</h3>
-          <p>Facilitate expertise exchange between diaspora professionals and local 
-          institutions for capacity building.</p>
-        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 50px;">
+        <a href="news.html" class="btn btn-primary">
+          <i class="fas fa-newspaper"></i> View All News & Articles
+        </a>
       </div>
     </section>
 
-    <!-- Executive Team -->
-
+    <!-- Upcoming Events -->
+    <section class="section events-preview" aria-labelledby="upcoming-events">
+      <div class="section-title">
+        <h2 id="upcoming-events">Upcoming Events</h2>
+        <p>Join diaspora community gatherings, workshops, and networking events</p>
+      </div>
+      
+      <div class="events-container">
+        <div class="upcoming-events">
+          <h3><i class="far fa-calendar-alt"></i> March 2025 Events</h3>
+          <ul class="event-list">
+            <li class="event-item">
+              <span class="event-date">
+                <i class="far fa-calendar"></i> Mar 25, 2025
+              </span>
+              <h4>Virtual Networking: FinTech Diaspora Professionals</h4>
+              <div class="event-location">
+                <i class="fas fa-video"></i> Online • 6:00 PM GMT
+              </div>
+            </li>
+            <li class="event-item">
+              <span class="event-date">
+                <i class="far fa-calendar"></i> Mar 28-30, 2025
+              </span>
+              <h4>Diaspora Investment Summit Accra 2025</h4>
+              <div class="event-location">
+                <i class="fas fa-map-marker-alt"></i> Kempinski Hotel, Accra
+              </div>
+            </li>
+            <li class="event-item">
+              <span class="event-date">
+                <i class="far fa-calendar"></i> Apr 5, 2025
+              </span>
+              <h4>Webinar: Navigating Ghana's Startup Ecosystem</h4>
+              <div class="event-location">
+                <i class="fas fa-video"></i> Online • 4:00 PM GMT
+              </div>
+            </li>
+            <li class="event-item">
+              <span class="event-date">
+                <i class="far fa-calendar"></i> Apr 12, 2025
+              </span>
+              <h4>Diaspora Health Professionals Workshop</h4>
+              <div class="event-location">
+                <i class="fas fa-map-marker-alt"></i> Korle Bu Teaching Hospital
+              </div>
+            </li>
+          </ul>
+          
+          <div style="margin-top: 30px;">
+            <a href="events.html" class="btn" style="background: var(--primary); color: white; width: 100%;">
+              <i class="fas fa-calendar-plus"></i> View Full Events Calendar
+            </a>
+          </div>
+        </div>
+        
+        <div class="calendar-placeholder">
+          <h3><i class="fas fa-calendar-day"></i> Interactive Events Calendar</h3>
+          <p>Browse all upcoming diaspora events, set reminders, and register for sessions that match your interests.</p>
+          <div style="font-size: 4rem; margin: 20px 0;">
+            📅
+          </div>
+          <p>Our calendar includes virtual and in-person events across time zones.</p>
+          <a href="events.html" class="btn btn-secondary" style="margin-top: 20px;">
+            <i class="fas fa-external-link-alt"></i> Open Calendar
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- Join Community -->
     <section class="section join-section" aria-labelledby="join-community">
@@ -1060,59 +1338,35 @@
           </div>
         </div>
         <p>Connecting diaspora talent with Ghana's development opportunities since 2025.</p>
-    <div class="social-links">
-  <!-- LinkedIn -->
-  <a
-    href="https://linkedin.com/company/ddigghana"
-    class="social-icon linkedin"
-    aria-label="LinkedIn"
-    target="_blank"
-    rel="noopener"
-  >
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4.98 3.5C3.88 3.5 3 4.38 3 5.48s.88 1.98 1.98 1.98a1.98 1.98 0 100-3.96zM3.5 8.75h2.96V21H3.5zM9.25 8.75h2.84v1.67h.04c.4-.76 1.38-1.56 2.85-1.56 3.05 0 3.61 2 3.61 4.6V21h-2.96v-6.54c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V21H9.25z"/>
-    </svg>
-  </a>
+        <div class="social-links">
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/company/ddigghana" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.98 3.5C3.88 3.5 3 4.38 3 5.48s.88 1.98 1.98 1.98a1.98 1.98 0 100-3.96zM3.5 8.75h2.96V21H3.5zM9.25 8.75h2.84v1.67h.04c.4-.76 1.38-1.56 2.85-1.56 3.05 0 3.61 2 3.61 4.6V21h-2.96v-6.54c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V21H9.25z"/>
+            </svg>
+          </a>
 
-  <!-- Facebook -->
-  <a
-    href="https://www.facebook.com/share/1BbgDoypPM/"
-    class="social-icon facebook"
-    aria-label="Facebook"
-    target="_blank"
-    rel="noopener"
-  >
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M22.68 0H1.32A1.32 1.32 0 000 1.32v21.36A1.32 1.32 0 001.32 24h11.5v-9.3H9.69V11h3.13V8.41c0-3.1 1.9-4.79 4.66-4.79 1.32 0 2.45.1 2.78.14v3.23h-1.91c-1.5 0-1.79.71-1.79 1.76V11h3.58l-.47 3.7h-3.1V24h6.08A1.32 1.32 0 0024 22.68V1.32A1.32 1.32 0 0022.68 0z"/>
-    </svg>
-  </a>
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/share/1BbgDoypPM/" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.68 0H1.32A1.32 1.32 0 000 1.32v21.36A1.32 1.32 0 001.32 24h11.5v-9.3H9.69V11h3.13V8.41c0-3.1 1.9-4.79 4.66-4.79 1.32 0 2.45.1 2.78.14v3.23h-1.91c-1.5 0-1.79.71-1.79 1.76V11h3.58l-.47 3.7h-3.1V24h6.08A1.32 1.32 0 0024 22.68V1.32A1.32 1.32 0 0022.68 0z"/>
+            </svg>
+          </a>
 
-  <!-- Twitter / X -->
-  <a
-    href="https://twitter.com/ddigghana"
-    class="social-icon twitter"
-    aria-label="X"
-    target="_blank"
-    rel="noopener"
-  >
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M18.3 2H21l-5.9 6.74L22 22h-5.4l-4.3-6.3L6.9 22H4l6.3-7.2L2 2h5.5l3.9 5.7z"/>
-    </svg>
-  </a>
+          <!-- Twitter / X -->
+          <a href="https://twitter.com/ddigghana" class="social-icon twitter" aria-label="X" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.3 2H21l-5.9 6.74L22 22h-5.4l-4.3-6.3L6.9 22H4l6.3-7.2L2 2h5.5l3.9 5.7z"/>
+            </svg>
+          </a>
 
-  <!-- Instagram -->
-  <a
-    href="https://instagram.com/ddigghana"
-    class="social-icon instagram"
-    aria-label="Instagram"
-    target="_blank"
-    rel="noopener"
-  >
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.9.26 2.35.43a4.7 4.7 0 011.7 1.1 4.7 4.7 0 011.1 1.7c.17.45.37 1.15.43 2.35.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.26 1.9-.43 2.35a4.7 4.7 0 01-1.1 1.7 4.7 4.7 0 01-1.7 1.1c-.45.17-1.15.37-2.35.43-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.9-.26-2.35-.43a4.7 4.7 0 01-1.7-1.1 4.7 4.7 0 01-1.1-1.7c-.17-.45-.37-1.15-.43-2.35C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.26-1.9.43-2.35a4.7 4.7 0 011.1-1.7 4.7 4.7 0 011.7-1.1c.45-.17 1.15-.37 2.35-.43C8.4 2.2 8.8 2.2 12 2.2zm0 3.3a6.5 6.5 0 100 13 6.5 6.5 0 000-13zm0 10.7a4.2 4.2 0 110-8.4 4.2 4.2 0 010 8.4zm6.7-10.9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
-    </svg>
-  </a>
-</div>
+          <!-- Instagram -->
+          <a href="https://instagram.com/ddigghana" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.9.26 2.35.43a4.7 4.7 0 011.7 1.1 4.7 4.7 0 011.1 1.7c.17.45.37 1.15.43 2.35.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.26 1.9-.43 2.35a4.7 4.7 0 01-1.1 1.7 4.7 4.7 0 01-1.7 1.1c-.45.17-1.15.37-2.35.43-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.9-.26-2.35-.43a4.7 4.7 0 01-1.7-1.1 4.7 4.7 0 01-1.1-1.7c-.17-.45-.37-1.15-.43-2.35C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.26-1.9.43-2.35a4.7 4.7 0 011.1-1.7 4.7 4.7 0 011.7-1.1c.45-.17 1.15-.37 2.35-.43C8.4 2.2 8.8 2.2 12 2.2zm0 3.3a6.5 6.5 0 100 13 6.5 6.5 0 000-13zm0 10.7a4.2 4.2 0 110-8.4 4.2 4.2 0 010 8.4zm6.7-10.9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
       <div class="footer-section">
@@ -1122,8 +1376,7 @@
           <li><a href="about.html">About DDIG</a></li>
           <li><a href="talent-pool.html">Talent Pool</a></li>
           <li><a href="projects.html">Development Projects</a></li>
-          <li><a href="network.html">Professional Network</a></li>
-          <li><a href="get-involved.html">Get Involved</a></li>
+         
         </ul>
       </div>
 
@@ -1145,13 +1398,11 @@
           <p><em>All contacts are clickable for calls/messages</em></p>
         </div>
       </div>
-
-     
     </div>
 
     <div class="footer-bottom">
       <p>© <span id="current-year">2025</span> Diaspora Development Initiative Ghana. All rights reserved.</p>
-      <p style="margin-top: 10px; font-size: 0.85rem;">Developed by JayTech - Solutions </p>
+      <p style="margin-top: 10px; font-size: 0.85rem;">Developed by JayTech - Solutions</p>
     </div>
   </footer>
 
@@ -1199,28 +1450,6 @@
       }
     });
     
-    // Newsletter form
-    const newsletterForm = document.getElementById('newsletter-form');
-    if (newsletterForm) {
-      newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = this.querySelector('input[type="email"]').value;
-        
-        // Basic validation
-        if (!email || !email.includes('@')) {
-          alert('Please enter a valid email address');
-          return;
-        }
-        
-        // Simulate submission
-        this.querySelector('input[type="email"]').value = '';
-        alert('Thank you for subscribing to DDIG updates! You\'ll receive opportunities and project updates.');
-        
-        // In production: Send to backend
-        // fetch('/api/newsletter', { method: 'POST', body: JSON.stringify({ email }) })
-      });
-    }
-    
     // Update current year
     document.getElementById('current-year').textContent = new Date().getFullYear();
     
@@ -1240,7 +1469,7 @@
     }, observerOptions);
     
     // Observe all cards
-    document.querySelectorAll('.talent-card, .team-card, .benefit-item').forEach(card => {
+    document.querySelectorAll('.talent-card, .team-card, .benefit-item, .news-card, .event-item').forEach(card => {
       card.style.opacity = '0';
       card.style.transform = 'translateY(20px)';
       card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -1249,14 +1478,6 @@
     
     // Make all phone numbers clickable (they already are in HTML)
     console.log('DDIG Diaspora Platform loaded successfully');
-    
-    // Security: Basic form protection
-    document.addEventListener('submit', function(e) {
-      if (e.target.tagName === 'FORM') {
-        // Add CSRF token in production
-        console.log('Form submission secured');
-      }
-    });
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1281,6 +1502,30 @@
               document.body.style.overflow = '';
             }
           }
+        }
+      });
+    });
+
+    // Events countdown functionality (placeholder)
+    const eventDates = document.querySelectorAll('.event-date');
+    eventDates.forEach(dateEl => {
+      const dateText = dateEl.textContent;
+      // In a real implementation, you would calculate days until event
+      // This is a placeholder for future enhancement
+    });
+
+    // Newsletter subscription (placeholder)
+    const newsletterForms = document.querySelectorAll('form.newsletter-form');
+    newsletterForms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        if (email && email.includes('@')) {
+          alert('Thank you for subscribing to DDIG updates! You\'ll receive news and event notifications.');
+          this.querySelector('input[type="email"]').value = '';
+        } else {
+          alert('Please enter a valid email address.');
         }
       });
     });
